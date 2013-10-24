@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.cofrinho.UsuarioDao;
 import br.com.cofrinho.model.Usuario;
 import br.com.cofrinho.service.UsuarioService;
 
@@ -35,7 +34,7 @@ public class UsuarioController {
 		ModelAndView modelAndView = new ModelAndView("manutencaoDeUsuario");
 		usuarioService.addUsuario(usuario);
 		
-		String message = "Usuário inserido com sucesso!";
+		String message = "Usuï¿½rio inserido com sucesso!";
 		modelAndView.addObject("message", message);
 		
 		return modelAndView;
@@ -66,7 +65,7 @@ public class UsuarioController {
 		
 		usuarioService.updateUsuario(usuario);
 		
-		String message = "Usuário editado com sucesso!";
+		String message = "Usuï¿½rio editado com sucesso!";
 		modelAndView.addObject("message", message);
 		
 		return modelAndView;
@@ -76,7 +75,7 @@ public class UsuarioController {
 	public ModelAndView deleteUsuario(@PathVariable Integer codUsuario) {
 		ModelAndView modelAndView = new ModelAndView("manutencaoDeUsuario");
 		usuarioService.deleteUsuario(codUsuario);
-		String message = "Usuário apagado com sucesso!";
+		String message = "Usuï¿½rio apagado com sucesso!";
 		modelAndView.addObject("message", message);
 		return modelAndView;
 	}
