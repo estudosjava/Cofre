@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
   							<label class="control-label" for="inputError">Login ou senha incorretos</label>
   							<input type="text" name="login" id="inputError" class="form-control" placeholder="Usuário" autofocus="">
 				        	<br>
-				        	<input type="password" name="senha" id="inputError" class="form-control" placeholder="Senha">
+				        	<input type="password" name="password" id="inputError" class="form-control" placeholder="Senha">
 				        <br>
 						</div>
 				        

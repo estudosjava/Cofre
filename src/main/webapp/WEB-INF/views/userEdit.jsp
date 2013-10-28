@@ -22,12 +22,12 @@
 					</fieldset>
 				</form>					
 				<p>${message}</p>
-				<form:form method="POST" commandName="usuario" action="${pageContext.request.contextPath}/usuario/edit/${usuario.codUsuario}.html" class="form-horizontal">
+				<form:form method="POST" commandName="user" action="${pageContext.request.contextPath}/user/edit/${user.userId}.html" class="form-horizontal">
 					<table>
 						<tbody>
 							<tr>
 								<td>Nome:</td>
-								<td><form:input path="nome" /></td>
+								<td><form:input path="name" /></td>
 							</tr>
 							<tr>
 								<td>Login:</td>
@@ -35,16 +35,16 @@
 							</tr>
 							<tr>
 								<td>Senha:</td>
-								<td><form:input path="senha" /></td>
+								<td><form:input path="password" /></td>
 							</tr>
 						    <tr>
 								<td>Tipo de usuário:</td>
-								<td><form:input path="codTipoUsuario" /></td>
+								<td><form:input path="userTypeId" /></td>
 							</tr>
 							
 							<tr>
 								<td>Equipe:</td>
-								<td><form:input path="codEquipe" /></td>
+								<td><form:input path="teamId" /></td>
 							</tr>
 							<tr>
 								<td><input type="submit" value="Alterar" class="btn btn-default" /></td>
@@ -53,7 +53,7 @@
 						</tbody>
 					</table>
 				</form:form>
-				<p><a href="${pageContext.request.contextPath}/manutencaoDeUsuario.html">Manutenção de Usuários</a></p>
+				<p><a href="${pageContext.request.contextPath}/userMaintenance.html">Manutenção de Usuários</a></p>
 			</div>
 		</div>
 	</div>	

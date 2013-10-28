@@ -16,9 +16,9 @@ public class LinkController {
 		return new ModelAndView("index");
 	}
 	
-	@RequestMapping(value="/manutencaoDeUsuario")
+	@RequestMapping(value="/userMaintenance")
 	public ModelAndView manutencaoDeUsuarioView() {
-	    return new ModelAndView("manutencaoDeUsuario");
+	    return new ModelAndView("userMaintenance");
 	}
 	
 	@RequestMapping(value="/home")

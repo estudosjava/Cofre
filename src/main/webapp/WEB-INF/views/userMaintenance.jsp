@@ -21,9 +21,9 @@
 						${message}
 						<br />
 						<br />
-						<a href="${pageContext.request.contextPath}/usuario/add.html">Adiciona novo usuário</a>
+						<a href="${pageContext.request.contextPath}/user/add.html">Adiciona novo usuário</a>
 						<br />
-						<a href="${pageContext.request.contextPath}/usuario/list.html">Lista usuários</a>						
+						<a href="${pageContext.request.contextPath}/user/list.html">Lista usuários</a>						
 					</fieldset>
 				</form>
 			</div>

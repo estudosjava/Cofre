@@ -20,8 +20,7 @@
 				<legend>Lista de Usuários</legend>
 				<table class="table table-striped" >
 					<thead>
-						<tr>
-							<th width="5%">Código</th>
+						<tr>							
 							<th width="15%">Nome</th>
 							<th width="10%">Login</th>
 							<th width="10%">Senha</th>
@@ -32,26 +31,25 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="usuario" items="${usuarios}">
-							<tr>
-								<td>${usuario.codUsuario}</td>
-								<td>${usuario.nome}</td>
-								<td>${usuario.login}</td>
-								<td>${usuario.senha}</td>
-								<td>${usuario.codTipoUsuario}</td>
-								<td>${usuario.codEquipe}</td>
+						<c:forEach var="user" items="${users}">
+							<tr>							
+								<td>${user.name}</td>
+								<td>${user.login}</td>
+								<td>${user.password}</td>
+								<td>${user.userTypeId}</td>
+								<td>${user.teamId}</td>
 								<td>
-									<a href="${pageContext.request.contextPath}/usuario/edit/${usuario.codUsuario}.html"><img src="/Cofre/resources/imagens/alterar.png" alt="Editar"/></a>
+									<a href="${pageContext.request.contextPath}/user/edit/${user.userId}.html"><img src="/Cofre/resources/imagens/alterar.png" alt="Editar"/></a>
 								</td>
 								<td>
-								<a href="${pageContext.request.contextPath}/usuario/delete/${usuario.codUsuario}.html"><img src="/Cofre/resources/imagens/excluir.gif" alt="Excluir"/></a><br/>
+								<a href="${pageContext.request.contextPath}/user/delete/${user.userId}.html"><img src="/Cofre/resources/imagens/excluir.gif" alt="Excluir"/></a><br/>
 								</td>							
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 				<br />				
-				<p><a href="${pageContext.request.contextPath}/manutencaoDeUsuario.html">Manutenção de Usuário</a></p>
+				<p><a href="${pageContext.request.contextPath}/userMaintenance.html">Manutenção de Usuário</a></p>
 			</div>
 		</div>
 	</div>		
