@@ -5,8 +5,8 @@
     <meta name="author" content="">
 	<link href="/Cofre/resources/css/bootstrap.css" rel="stylesheet">
 	<link href="/Cofre/resources/css/bootstrap-responsive.css" rel="stylesheet">
-	<script type="text/javascript" src="resources/js/jquery.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap-dropdown.js"></script>
+	<script type="text/javascript" src="/Cofre/resources/js/jquery.js"></script>
+	<script type="text/javascript" src="/Cofre/resources/js/bootstrap-dropdown.js"></script>
 	<script>
 		function teste (x, event)
 		{
