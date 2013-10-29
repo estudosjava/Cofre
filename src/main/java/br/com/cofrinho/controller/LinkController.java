@@ -31,8 +31,8 @@ public class LinkController {
 	    return new ModelAndView("homepage");
 	}
 	
-	@RequestMapping(value="/cadastroEquipe")
+	@RequestMapping(value="/addTeam")
 	public ModelAndView cadastroEquipeView() {
-	    return new ModelAndView("cadastroEquipe");
+	    return new ModelAndView("teamAdd");
 	}
 }
