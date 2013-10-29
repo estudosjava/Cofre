@@ -9,29 +9,31 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="equipes")
-public class Equipe {
+public class Team {
 	
 	@Id
 	@Column(name="cod_equipe", nullable= false)
 	@GeneratedValue	
-	private Integer codEquipe;
+	private Integer teamId;
 	
 	@Column(name="Nome", nullable= false)
-	private String nome;
-	
-	public Integer getCodEquipe() {
-		return codEquipe;
-	}
-	
-	public void setCodEquipe(Integer codEquipe) {
-		this.codEquipe = codEquipe;
+	private String name;
+
+	public Integer getTeamId() {
+		return teamId;
 	}
 
-	public String getNome() {
-		return nome;
+	public void setTeamId(Integer teamId) {
+		this.teamId = teamId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	public void setNome(String nome){
-		this.nome = nome;
-	}
+	
 }

@@ -16,7 +16,7 @@
 					<a href="#">Usuários</a>
 				</li>
 				<li class="menuSup">
-					<a href="${pageContext.request.contextPath}/equipe/list.html">Equipes</a>
+					<a href="${pageContext.request.contextPath}/team/listTeam.html">Equipes</a>
 				</li>
 				<li class="menuSup">
 					<a href="#">Multas</a>

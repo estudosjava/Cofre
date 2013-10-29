@@ -9,29 +9,28 @@
 	<title>Edição de Equipe</title>
 </head>
 <body>
-<div class="container-fluid">	
+	<div class="container-fluid">	
 		<%@ include file = "header2.jsp" %>		
 		<div class="row-fluid">
 			<div class="span2">
 				<%@ include file = "menu.jsp" %>
 			</div>
 			<div class="span10">
-			<form:form method="POST" commandName="equipe" action="${pageContext.request.contextPath}/equipe/edit/${equipe.codEquipe}.html" class="form-horizontal">
+			<form:form method="POST" commandName="team" action="${pageContext.request.contextPath}/team/edit/${team.teamId}.html" class="form-horizontal">
 				<fieldset>
 				<!-- Form Name -->
 				<legend>Alterar Equipe</legend>
 				<!-- Text input-->
 				<div class="control-group">
-  				<label class="control-label" for="nome">Nome:</label>
+  				<label class="control-label" for="name">Nome:</label>
   				<div class="controls">
-    			<form:input path="nome" class="input-medium" />
+    			<form:input path="name" class="input-medium" />
   				</div>
 				</div>
 				<!-- Button -->
 				<div class="control-group">
-				  <label class="control-label" for="cadastroEquipe"></label>
 				  <div class="controls">
-				    <input type="submit" class="btn btn-default" align="left" value="Alterar">
+				    <input type="submit" class="btn btn-default" align="left" value="Alterar" />
 				  </div>
 				</div>
 				

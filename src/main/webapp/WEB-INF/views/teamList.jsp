@@ -23,11 +23,11 @@
 					    <th></th>
 					  </tr>
 					  <tbody>
-					  <c:forEach items="${equipes}" var="equipe">
+					  <c:forEach items="${teams}" var="team">
 					    <tr>
-					      <td style="width: 500px">${equipe.nome}</td>
-					      <td><a href="${pageContext.request.contextPath}/equipe/edit/${equipe.codEquipe}.html"><img src="/Cofre/resources/imagens/alterar.png" alt="Alterar"/></a></td>
-					      <td><a href="${pageContext.request.contextPath}/equipe/delete/${equipe.codEquipe}.html"><img src="/Cofre/resources/imagens/excluir.gif" alt="Remover"/></a></td>
+					      <td style="width: 500px">${team.name}</td>
+					      <td><a href="${pageContext.request.contextPath}/team/edit/${team.teamId}.html"><img src="/Cofre/resources/imagens/alterar.png" alt="Alterar"/></a></td>
+					      <td><a href="${pageContext.request.contextPath}/team/delete/${team.teamId}.html"><img src="/Cofre/resources/imagens/excluir.gif" alt="Remover"/></a></td>
 					    </tr>
 					  </c:forEach>
 					  </tbody>
