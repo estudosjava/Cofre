@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@ include file = "header1.jsp" %>
-	<title>Equipes</title>
+	<title>Times</title>
 </head>
 <body>
 	<div class="container-fluid">

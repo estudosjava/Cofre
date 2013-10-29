@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@ include file = "header1.jsp" %>
-	<title>Edição de Equipe</title>
+	<title>Edição de Time</title>
 </head>
 <body>
 	<div class="container-fluid">	
@@ -19,7 +19,7 @@
 			<form:form method="POST" commandName="team" action="${pageContext.request.contextPath}/team/edit/${team.teamId}.html" class="form-horizontal">
 				<fieldset>
 				<!-- Form Name -->
-				<legend>Alterar Equipe</legend>
+				<legend>Alterar Time</legend>
 				<!-- Text input-->
 				<div class="control-group">
   				<label class="control-label" for="name">Nome:</label>
@@ -33,7 +33,6 @@
 				    <input type="submit" class="btn btn-default" align="left" value="Alterar" />
 				  </div>
 				</div>
-				
 				</fieldset>
 				</form:form>				
 				</div>

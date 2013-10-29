@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@ include file = "header1.jsp" %>
-	<title>Lista de Equipes</title>
+	<title>Lista de Times</title>
 </head>
 <body>
 	<div class="container-fluid">	
@@ -18,7 +18,7 @@
 			<div class="span10">
 			<table class="table table-striped" style="width: 700px">
 					  <tr>
-					    <th>Equipes</th>
+					    <th>Times</th>
 					    <th></th>
 					    <th></th>
 					  </tr>

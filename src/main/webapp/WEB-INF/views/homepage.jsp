@@ -49,7 +49,7 @@
 								<a href="#">Usuários</a>
 							</li>
 							<li class="menuSup">
-								<a href="#">Equipes</a>
+								<a href="#">Times</a>
 							</li>
 							<li class="menuSup">
 								<a href="#">Multas</a>
