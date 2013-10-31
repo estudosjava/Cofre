@@ -35,4 +35,9 @@ public class LinkController {
 	public ModelAndView cadastroEquipeView() {
 	    return new ModelAndView("teamAdd");
 	}
+	
+	@RequestMapping(value="/addTypePenalty")
+	public ModelAndView cadastroTipoMultaView() {
+	    return new ModelAndView("typePenaltyAdd");
+	}
 }
