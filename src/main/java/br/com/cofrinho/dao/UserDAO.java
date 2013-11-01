@@ -37,9 +37,8 @@ public class UserDAO {
 		return userToUpdate;
 	}
 	
-	public void updateUser(User user) {
-		User userToUpdate = instanceUserDAO(user);				
-		getCurrentSession().update(userToUpdate);		
+	public void updateUser(User user) {		
+		getCurrentSession().update(instanceUserDAO(user));		
 	}
 
 	public User getUser(int userId) {		
