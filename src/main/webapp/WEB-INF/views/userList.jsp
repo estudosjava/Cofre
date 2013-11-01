@@ -2,7 +2,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <jsp:include page="header.jsp" flush="true">  
 	<jsp:param name="title" value="Lista de Usuários"/>  
-</jsp:include> 				
+</jsp:include> 		
+<p>${message}</p>		
 <table class="table table-striped" >
 	<thead>
 		<tr>							
@@ -33,6 +34,5 @@
 		</c:forEach>
 	</tbody>
 </table>
-<br />				
-<p><a href="${pageContext.request.contextPath}/userMaintenance.html">Manutenção de Usuário</a></p>
+<br />	
 <jsp:include page="footer.jsp" flush="true"/>

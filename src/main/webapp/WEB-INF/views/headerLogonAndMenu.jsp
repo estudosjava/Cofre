@@ -13,8 +13,8 @@
 			<ul class="nav nav-pills" id="menuSup">
 		    <li class="dropdown"> <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Usuários <b class="caret"></b></a>
             <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="http://google.com">Cadastro</a></li>
-            <li><a tabindex="-1" href="#anotherAction">Pesquisa</a></li>
+            <li><a tabindex="-1" href="${pageContext.request.contextPath}/user/add.html">Cadastro</a></li>
+            <li><a tabindex="-1" href="${pageContext.request.contextPath}/user/list.html">Pesquisa</a></li>
             </ul>
             </li>
 		    <li class="dropdown"> 

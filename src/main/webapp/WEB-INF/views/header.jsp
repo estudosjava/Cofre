@@ -24,7 +24,7 @@
 	<div class="container-fluid">	
 		<%@ include file = "headerLogonAndMenu.jsp" %>		
 		<div class="row-fluid">
-			<%@ include file = "menu.jsp" %>			
+			 <%@ include file = "menu.jsp" %>			
 			<div class="span8">
 				<form class="form-horizontal">
 					<fieldset>

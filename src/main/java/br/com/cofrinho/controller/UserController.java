@@ -1,7 +1,6 @@
 package br.com.cofrinho.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,44 +28,43 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingUser(@ModelAttribute User user) throws IOException {											
-		ModelAndView modelAndView = new ModelAndView("userMaintenance");		
-		userService.addUser(user);		
-		modelAndView.addObject("message", Util.getMessage("register.added"));		
-		return modelAndView;
-	}
-	
 	@RequestMapping(value="/list")
 	public ModelAndView listOfUsers() {
-		ModelAndView modelAndView = new ModelAndView("userList");		
-		List<User> users = userService.getUsers();
-		modelAndView.addObject("users", users);	
+		ModelAndView modelAndView = new ModelAndView("userList");				
+		modelAndView.addObject("users", userService.getUsers());	
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{userId}", method=RequestMethod.GET)
 	public ModelAndView editUserPage(@PathVariable Integer userId) {
 		ModelAndView modelAndView = new ModelAndView("userEdit");		
-		User user = userService.getUser(userId);
-		modelAndView.addObject("user",user);		
+		modelAndView.addObject("user",userService.getUser(userId));		
 		return modelAndView;
 	}
-	
-	@RequestMapping(value="/edit/{userId}", method=RequestMethod.PUT)
-	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) throws IOException {		
-		ModelAndView modelAndView = new ModelAndView("userMaintenance");		
-		userService.updateUser(user);				
-		modelAndView.addObject("message", Util.getMessage("register.updated"));		
-		return modelAndView;
-	}
-	
+		
 	@RequestMapping(value="/delete/{userId}", method=RequestMethod.GET)
 	public ModelAndView deleteUser(@PathVariable Integer userId) throws IOException {
-		ModelAndView modelAndView = new ModelAndView("userMaintenance");		
 		userService.deleteUser(userId);
-		modelAndView.addObject("message", Util.getMessage("register.deleted"));		
+		return returnModel("register.deleted");
+	}
+	
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public ModelAndView addingUser(@ModelAttribute User user) throws IOException {											
+		userService.addUser(user);		
+		return returnModel("register.added");
+	}
+	
+	@RequestMapping(value="/edit/{userId}", method=RequestMethod.POST)
+	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) throws IOException {		
+		userService.updateUser(user);				
+		return returnModel("register.updated");
+	}
+	
+	public ModelAndView returnModel(String message) throws IOException{
+		ModelAndView modelAndView = new ModelAndView("userList");		
+		modelAndView.addObject("message", Util.getMessage(message));	
+		modelAndView.addObject("users", userService.getUsers());
 		return modelAndView;
-	}	
+	}
 	
 }
