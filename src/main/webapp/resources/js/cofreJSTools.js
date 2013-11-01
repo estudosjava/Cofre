@@ -1,5 +1,4 @@
-function teste (x, event)
-{
+function teste (x, event){
 	event.preventDefault();
 	$("#menuSup li").removeClass("active");
 	$(x).addClass("active");

@@ -54,7 +54,7 @@ public class TeamController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/edit/{teamId}", method=RequestMethod.POST)
+	@RequestMapping(value="/edit/{teamId}", method=RequestMethod.PUT)
 	public ModelAndView edditingTeam(@ModelAttribute Team team, @PathVariable Integer teamId) throws IOException {		
 		ModelAndView modelAndView = new ModelAndView("teamMaintenance");		
 		teamService.updateTeam(team);			
