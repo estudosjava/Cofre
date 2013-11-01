@@ -19,8 +19,8 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @Configuration
-@ComponentScan("br.com.cofrinho")
-@EnableWebMvc
+//@ComponentScan("br.com.cofrinho")
+//@EnableWebMvc
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 public class WebAppConfig {
@@ -69,13 +69,13 @@ public class WebAppConfig {
 		return transactionManager;
 	}
 	
-	@Bean
-	public UrlBasedViewResolver setupViewResolver() {
-		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-		resolver.setPrefix("/WEB-INF/views/");
-		resolver.setSuffix(".jsp");
-		resolver.setViewClass(JstlView.class);
-		return resolver;
-	}
+//	@Bean
+//	public UrlBasedViewResolver setupViewResolver() {
+//		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+//		resolver.setPrefix("/WEB-INF/views/");
+//		resolver.setSuffix(".jsp");
+//		resolver.setViewClass(JstlView.class);
+//		return resolver;
+//	}
 
 }

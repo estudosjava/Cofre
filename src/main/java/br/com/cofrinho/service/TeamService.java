@@ -35,5 +35,4 @@ public class TeamService {
 	public List<Team> getTeams() {
 		return teamDAO.getTeams();
 	}
-
 }

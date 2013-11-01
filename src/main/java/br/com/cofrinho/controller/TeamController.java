@@ -1,6 +1,7 @@
 package br.com.cofrinho.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +49,14 @@ public class TeamController {
 	@RequestMapping(value="/addTeam", method=RequestMethod.POST)
 	public ModelAndView addingTeam(@ModelAttribute Team team) throws IOException {		
 		ModelAndView modelAndView = new ModelAndView("teamList");
-		teamService.addTeam(team);		
-		modelAndView.addObject("teams", getListTeams());
-		modelAndView.addObject("message", Util.getMessage("register.added"));		
+		try {
+			teamService.addTeam(team);
+			modelAndView.addObject("teams", getListTeams());
+			modelAndView.addObject("message", Util.getMessage("register.added"));				
+		} catch (Exception e) {
+			modelAndView = new ModelAndView("teamAdd");
+			modelAndView.addObject("message", Util.getMessage("register.exists"));
+		}
 		return modelAndView;
 	}
 		
