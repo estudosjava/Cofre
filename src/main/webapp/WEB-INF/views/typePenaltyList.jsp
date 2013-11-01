@@ -5,11 +5,12 @@
 </jsp:include>                                 
 <table class="table table-striped" style="width: 700px">        
         <tbody>
-                <c:forEach items="${penaltys}" var="penalty">
+                <c:forEach items="${typepenaltys}" var="typepenalty">
                   <tr>
-                    <td style="width: 500px">${team.name}</td>
-                    <td><a href="${pageContext.request.contextPath}/team/edit/${team.teamId}.html"><img src="/Cofre/resources/imagens/alterar.png" alt="Alterar"/></a></td>
-                    <td><a href="${pageContext.request.contextPath}/team/delete/${team.teamId}.html"><img src="/Cofre/resources/imagens/excluir.gif" alt="Remover"/></a></td>
+                    <td style="width: 250px">${typepenalty.description}</td>
+                    <td style="width: 250px">${typepenalty.value}</td>
+                    <td><a href="${pageContext.request.contextPath}/typepenalty/edit/${typepenalty.typePenaltyId}.html"><img src="/Cofre/resources/imagens/alterar.png" alt="Alterar"/></a></td>
+                    <td><a href="${pageContext.request.contextPath}/typepenalty/delete/${typepenalty.typePenaltyId}.html"><img src="/Cofre/resources/imagens/excluir.gif" alt="Remover"/></a></td>
                   </tr>
                 </c:forEach>
         </tbody>

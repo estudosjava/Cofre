@@ -32,7 +32,7 @@
             <li class="divider"></li>
             <li><a tabindex="-1">Tipos de Multa:</a></li>
             <li><a tabindex="-1" href="${pageContext.request.contextPath}/typepenalty/addTypePenalty.html">Cadastro</a></li>
-            <li><a tabindex="-1" href="#">Pesquisa</a></li>
+            <li><a tabindex="-1" href="${pageContext.request.contextPath}/typepenalty/listTypePenalty.html">Pesquisa</a></li>
             </ul>
             </li>
     		

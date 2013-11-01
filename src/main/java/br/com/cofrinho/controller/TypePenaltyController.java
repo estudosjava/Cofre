@@ -1,5 +1,7 @@
 package br.com.cofrinho.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,6 +34,16 @@ public class TypePenaltyController {
 		
 		String message = "Tipo de Multa inserida com sucesso!";
 		modelAndView.addObject("message", message);
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/listTypePenalty")
+	public ModelAndView listOfTypePenalty() {
+		ModelAndView modelAndView = new ModelAndView("typePenaltyList");
+		
+		List<TypePenalty> typepenaltys = typePenaltyService.getTypePenaltys();
+		modelAndView.addObject("typepenaltys", typepenaltys);
 		
 		return modelAndView;
 	}
