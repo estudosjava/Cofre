@@ -8,7 +8,7 @@
 		<div class="form-group">
  				<label class="col-lg-2 control-label" for="description">Descrição:</label>
  				<div class="col-lg-3">
-   				<input id="description" name="description" type="text" placeholder="Insira a descrição" class=form-control >
+   				<textarea id="description" name="description" placeholder="Insira a descrição" class=form-control></textarea>
  				</div>
 		</div>
 		<div class="form-group">

@@ -29,13 +29,15 @@
             <ul class="dropdown-menu">
             <li><a tabindex="-1" href="#">Cadastro</a></li>
             <li><a tabindex="-1" href="#">Pesquisa</a></li>
-            <li class="divider"></li>
-            <li><a tabindex="-1">Tipos de Multa:</a></li>
-            <li><a tabindex="-1" href="${pageContext.request.contextPath}/typepenalty/addTypePenalty.html">Cadastro</a></li>
-            <li><a tabindex="-1" href="${pageContext.request.contextPath}/typepenalty/listTypePenalty.html">Pesquisa</a></li>
             </ul>
             </li>
-    		
+            <li class="dropdown"> 
+			<a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Tipos de Multas <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li><a tabindex="-1" href="${pageContext.request.contextPath}/typepenalty/addTypePenalty.html">Cadastro</a></li>
+            <li><a tabindex="-1" href="${pageContext.request.contextPath}/typepenalty/listTypePenalty.html">Pesquisa</a></li>
+    		</ul>
+    		</li>
 		</div>
 	</div>	
 </div>
