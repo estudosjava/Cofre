@@ -4,6 +4,14 @@
         <jsp:param name="title" value="Lista de Tipos de Multa"/>  
 </jsp:include>                                 
 <table class="table table-striped" style="width: 700px">        
+        <thead>
+		<tr>							
+			<th>Descrição</th>
+			<th>Valor</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
         <tbody>
                 <c:forEach items="${typepenaltys}" var="typepenalty">
                   <tr>
