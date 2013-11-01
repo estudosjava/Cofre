@@ -4,15 +4,15 @@
 </jsp:include>
 <form:form method="POST" commandName="team" action="${pageContext.request.contextPath}/team/edit/${team.teamId}.html" class="form-horizontal">
 	<fieldset>	
-		<div class="control-group">
-				<label class="control-label" for="name">Nome:</label>
-				<div class="controls">
-					<form:input path="name" class="input-medium" />
+		<div class="form-group">
+				<label class="col-lg-2 control-label" for="name">Nome:</label>
+				<div class="col-lg-3">
+					<form:input path="name" class="form-control" />
 				</div>
 		</div>	
-		<div class="control-group">
-		  <div class="controls">
-		    <input type="submit" class="btn btn-default" align="left" value="Alterar" />
+		<div class="form-group">
+		  <div class="col-lg-3 control-label">
+		    <input type="submit" class="btn btn-default" value="Alterar" />
 		  </div>
 		</div>
 	</fieldset>
