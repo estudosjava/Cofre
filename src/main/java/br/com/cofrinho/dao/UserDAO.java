@@ -33,14 +33,12 @@ public class UserDAO {
 		userToUpdate.setTeamId(user.getTeamId());
 		userToUpdate.setLogin(user.getLogin());
 		userToUpdate.setName(user.getName());
-		userToUpdate.setPassword(user.getPassword());
-		
+		userToUpdate.setPassword(user.getPassword());		
 		return userToUpdate;
 	}
 	
 	public void updateUser(User user) {
-		User userToUpdate = instanceUserDAO(user);
-				
+		User userToUpdate = instanceUserDAO(user);				
 		getCurrentSession().update(userToUpdate);		
 	}
 
@@ -59,9 +57,7 @@ public class UserDAO {
 	}
 	
 	public boolean checkUser(User user) {
-
-		Connection con = new ConnectionFactory().getConnection();
-	
+		Connection con = new ConnectionFactory().getConnection();	
 		ResultSet rs;
 
 		int numberOfRecords = 0;

@@ -1,5 +1,6 @@
 package br.com.cofrinho.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.model.User;
 import br.com.cofrinho.service.UserService;
-
+import br.com.cofrinho.utils.Util;
 
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
 	
 	@Autowired
-	private UserService userService;		
+	private UserService userService;			
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public ModelAndView addUserPage() {
@@ -29,59 +30,42 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingUser(@ModelAttribute User user) {
-		
-		ModelAndView modelAndView = new ModelAndView("userMaintenance");
-		userService.addUser(user);
-		
-		String message = "Usuário inserido com sucesso!";
-		modelAndView.addObject("message", message);
-		
+	public ModelAndView addingUser(@ModelAttribute User user) throws IOException {											
+		ModelAndView modelAndView = new ModelAndView("userMaintenance");		
+		userService.addUser(user);		
+		modelAndView.addObject("message", Util.getMessage("register.added"));		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/list")
 	public ModelAndView listOfUsers() {
-		ModelAndView modelAndView = new ModelAndView("userList");
-		
+		ModelAndView modelAndView = new ModelAndView("userList");		
 		List<User> users = userService.getUsers();
-		modelAndView.addObject("users", users);
-		
+		modelAndView.addObject("users", users);	
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{userId}", method=RequestMethod.GET)
 	public ModelAndView editUserPage(@PathVariable Integer userId) {
-		ModelAndView modelAndView = new ModelAndView("userEdit");
-		
+		ModelAndView modelAndView = new ModelAndView("userEdit");		
 		User user = userService.getUser(userId);
-		modelAndView.addObject("user",user);
-		
+		modelAndView.addObject("user",user);		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{userId}", method=RequestMethod.POST)
-	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) {
-		
-		ModelAndView modelAndView = new ModelAndView("userMaintenance");
-		
-		userService.updateUser(user);
-		
-		String message = "Usuário editado com sucesso!";
-		modelAndView.addObject("message", message);
-		
+	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) throws IOException {		
+		ModelAndView modelAndView = new ModelAndView("userMaintenance");		
+		userService.updateUser(user);				
+		modelAndView.addObject("message", Util.getMessage("register.updated"));		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/delete/{userId}", method=RequestMethod.GET)
-	public ModelAndView deleteUser(@PathVariable Integer userId) {
-		ModelAndView modelAndView = new ModelAndView("userMaintenance");
-		
+	public ModelAndView deleteUser(@PathVariable Integer userId) throws IOException {
+		ModelAndView modelAndView = new ModelAndView("userMaintenance");		
 		userService.deleteUser(userId);
-		
-		String message = "Usuário apagado com sucesso!";		
-		modelAndView.addObject("message", message);
-		
+		modelAndView.addObject("message", Util.getMessage("register.deleted"));		
 		return modelAndView;
 	}	
 	

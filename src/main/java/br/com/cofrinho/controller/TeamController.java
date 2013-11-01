@@ -1,5 +1,6 @@
 package br.com.cofrinho.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.model.Team;
 import br.com.cofrinho.service.TeamService;
+import br.com.cofrinho.utils.Util;
 
 
 @Controller
@@ -29,24 +31,18 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/addTeam", method=RequestMethod.POST)
-	public ModelAndView addingTeam(@ModelAttribute Team team) {
-		
+	public ModelAndView addingTeam(@ModelAttribute Team team) throws IOException {		
 		ModelAndView modelAndView = new ModelAndView("teamMaintenance");
-		teamService.addTeam(team);
-		
-		String message = "Equipe inserida com sucesso!";
-		modelAndView.addObject("message", message);
-		
+		teamService.addTeam(team);				
+		modelAndView.addObject("message", Util.getMessage("register.added"));		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/listTeam")
 	public ModelAndView listOfTeams() {
-		ModelAndView modelAndView = new ModelAndView("teamList");
-		
+		ModelAndView modelAndView = new ModelAndView("teamList");		
 		List<Team> teams = teamService.getTeams();
-		modelAndView.addObject("teams", teams);
-		
+		modelAndView.addObject("teams", teams);		
 		return modelAndView;
 	}
 	
@@ -59,24 +55,18 @@ public class TeamController {
 	}
 	
 	@RequestMapping(value="/edit/{teamId}", method=RequestMethod.POST)
-	public ModelAndView edditingTeam(@ModelAttribute Team team, @PathVariable Integer teamId) {
-		
-		ModelAndView modelAndView = new ModelAndView("teamMaintenance");
-		
-		teamService.updateTeam(team);
-		
-		String message = "Equipe alterada com sucesso!";
-		modelAndView.addObject("message", message);
-		
+	public ModelAndView edditingTeam(@ModelAttribute Team team, @PathVariable Integer teamId) throws IOException {		
+		ModelAndView modelAndView = new ModelAndView("teamMaintenance");		
+		teamService.updateTeam(team);			
+		modelAndView.addObject("message", Util.getMessage("register.updated"));		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/delete/{teamId}", method=RequestMethod.GET)
-	public ModelAndView deleteTeam(@PathVariable Integer teamId) {
+	public ModelAndView deleteTeam(@PathVariable Integer teamId) throws IOException {
 		ModelAndView modelAndView = new ModelAndView("teamMaintenance");
-		teamService.deleteTeam(teamId);
-		String message = "Equipe removida com sucesso!";
-		modelAndView.addObject("message", message);
+		teamService.deleteTeam(teamId);	
+		modelAndView.addObject("message", Util.getMessage("register.deleted"));
 		return modelAndView;
 	}
 	
