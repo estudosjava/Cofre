@@ -30,19 +30,10 @@ public class TeamController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/addTeam", method=RequestMethod.POST)
-	public ModelAndView addingTeam(@ModelAttribute Team team) throws IOException {		
-		ModelAndView modelAndView = new ModelAndView("teamMaintenance");
-		teamService.addTeam(team);				
-		modelAndView.addObject("message", Util.getMessage("register.added"));		
-		return modelAndView;
-	}
-	
 	@RequestMapping(value="/listTeam")
 	public ModelAndView listOfTeams() {
-		ModelAndView modelAndView = new ModelAndView("teamList");		
-		List<Team> teams = teamService.getTeams();
-		modelAndView.addObject("teams", teams);		
+		ModelAndView modelAndView = new ModelAndView("teamList");	
+		modelAndView.addObject("teams", getListTeams());
 		return modelAndView;
 	}
 	
@@ -52,22 +43,39 @@ public class TeamController {
 		Team team = teamService.getTeam(teamId);
 		modelAndView.addObject("team",team);
 		return modelAndView;
-	}
+	}	
 	
+	@RequestMapping(value="/addTeam", method=RequestMethod.POST)
+	public ModelAndView addingTeam(@ModelAttribute Team team) throws IOException {		
+		ModelAndView modelAndView = new ModelAndView("teamList");
+		teamService.addTeam(team);		
+		modelAndView.addObject("teams", getListTeams());
+		modelAndView.addObject("message", Util.getMessage("register.added"));		
+		return modelAndView;
+	}
+		
 	@RequestMapping(value="/edit/{teamId}", method=RequestMethod.POST)
 	public ModelAndView edditingTeam(@ModelAttribute Team team, @PathVariable Integer teamId) throws IOException {		
-		ModelAndView modelAndView = new ModelAndView("teamMaintenance");		
-		teamService.updateTeam(team);			
+		ModelAndView modelAndView = new ModelAndView("teamList");
+		teamService.updateTeam(team);
+		modelAndView.addObject("teams", getListTeams());
 		modelAndView.addObject("message", Util.getMessage("register.updated"));		
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/delete/{teamId}", method=RequestMethod.GET)
 	public ModelAndView deleteTeam(@PathVariable Integer teamId) throws IOException {
-		ModelAndView modelAndView = new ModelAndView("teamMaintenance");
-		teamService.deleteTeam(teamId);	
+		ModelAndView modelAndView = new ModelAndView("teamList");
+		teamService.deleteTeam(teamId);
+		modelAndView.addObject("teams", getListTeams());
 		modelAndView.addObject("message", Util.getMessage("register.deleted"));
 		return modelAndView;
 	}
+	
+	public List<Team> getListTeams(){
+		List<Team> teams = teamService.getTeams();
+		return teams;
+	}
+	
 	
 }

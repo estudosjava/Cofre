@@ -2,7 +2,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <jsp:include page="header.jsp" flush="true">  
         <jsp:param name="title" value="Lista de Times"/>  
-</jsp:include>                                 
+</jsp:include> 
+<p>${message}</p>                                
 <table class="table table-striped" style="width: 700px">        
         <tbody>
                 <c:forEach items="${teams}" var="team">

@@ -13,7 +13,8 @@
 	<link href="/Cofre/resources/css/bootstrap-responsive.css" rel="stylesheet">
 	<script type="text/javascript" src="/Cofre/resources/js/jquery.js"></script>
 	<script type="text/javascript" src="/Cofre/resources/js/bootstrap-dropdown.js"></script>
-	<script type="text/javascript" src="/Cofre/resources/js/cofreJSTools.js"></script>	
+	<script type="text/javascript" src="/Cofre/resources/js/cofreJSTools.js"></script>
+	<script type="text/javascript" src="/Cofre/resources/js/jquery.maskMoney.js" ></script>	
 	<%
 		String title = request.getParameter("title");
 	%>

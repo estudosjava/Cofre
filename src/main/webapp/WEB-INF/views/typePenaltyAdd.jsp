@@ -3,6 +3,9 @@
 <jsp:include page="header.jsp" flush="true">  
 	<jsp:param name="title" value="Cadastro de Tipos de Multa"/>  
 </jsp:include> 	
+
+<p>${message}</p>
+
 <form method="POST" commandName="typepenalty" action="${pageContext.request.contextPath}/typepenalty/addTypePenalty.html" class="form-horizontal" >
 	<fieldset>			
 		<div class="form-group">
@@ -20,7 +23,7 @@
 		<div class="form-group">
 		  <label class="col-lg-1 control-label" for="cadastroTipoMulta"></label>
 			  <div class="col-lg-1 control-label">
-			    <button id="addTeam" name="addTeam" class="btn btn-default">Cadastrar</button>
+			    <button id="addTypePenalty" name="addTypePenalty" class="btn btn-default">Cadastrar</button>
 			  </div>
 		</div>
 	</fieldset>

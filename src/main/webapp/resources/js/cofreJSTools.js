@@ -11,3 +11,7 @@ $(document).ready(function(){
 		$(this).addClass("active");
 	});
 });
+
+$(document).ready(function(){
+    $("input#value").maskMoney({showSymbol:false, decimal:".", thousands:"."});
+});

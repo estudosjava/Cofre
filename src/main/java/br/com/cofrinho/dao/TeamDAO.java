@@ -30,8 +30,7 @@ public class TeamDAO {
 	}
 	
 	public void updateTeam(Team team) {
-		Team teamToUpdate = instanceTeamDAO(team);
-		
+		Team teamToUpdate = instanceTeamDAO(team);	
 		getCurrentSession().update(teamToUpdate);	
 	}
 	

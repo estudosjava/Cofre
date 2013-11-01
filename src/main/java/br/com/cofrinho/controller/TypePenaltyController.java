@@ -1,5 +1,6 @@
 package br.com.cofrinho.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.model.TypePenalty;
 import br.com.cofrinho.service.TypePenaltyService;
+import br.com.cofrinho.utils.Util;
 
 @Controller
 @RequestMapping(value="/typepenalty")
@@ -27,24 +29,18 @@ public class TypePenaltyController {
 	}
 	
 	@RequestMapping(value="/addTypePenalty", method=RequestMethod.POST)
-	public ModelAndView addingTypePenalty(@ModelAttribute TypePenalty typepenalty) {
-		
-		ModelAndView modelAndView = new ModelAndView("typePenaltyMaintenance");
+	public ModelAndView addingTypePenalty(@ModelAttribute TypePenalty typepenalty) throws IOException {
+		ModelAndView modelAndView = new ModelAndView("typePenaltyAdd");
 		typePenaltyService.addTypePenalty(typepenalty);
-		
-		String message = "Tipo de Multa inserida com sucesso!";
-		modelAndView.addObject("message", message);
-		
+		modelAndView.addObject("message", Util.getMessage("register.added"));
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/listTypePenalty")
 	public ModelAndView listOfTypePenalty() {
 		ModelAndView modelAndView = new ModelAndView("typePenaltyList");
-		
 		List<TypePenalty> typepenaltys = typePenaltyService.getTypePenaltys();
 		modelAndView.addObject("typepenaltys", typepenaltys);
-		
 		return modelAndView;
 	}
 }

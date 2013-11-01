@@ -19,7 +19,7 @@ public class TypePenalty {
 	private String description;
 	
 	@Column(name="valor", nullable= false)
-	private Integer value;
+	private Double value;
 
 	public Integer getTypePenaltyId() {
 		return typePenaltyId;
@@ -37,11 +37,11 @@ public class TypePenalty {
 		this.description = description;
 	}
 
-	public Integer getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 

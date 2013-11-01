@@ -3,6 +3,7 @@
 <jsp:include page="header.jsp" flush="true">  
 	<jsp:param name="title" value="Cadastro de Times"/>  
 </jsp:include> 	
+<p>${message}</p>
 <form method="POST" commandName="team" action="${pageContext.request.contextPath}/team/addTeam.html" class="form-horizontal" >
 	<fieldset>			
 		<div class="form-group">
