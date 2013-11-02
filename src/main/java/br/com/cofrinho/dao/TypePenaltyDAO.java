@@ -30,21 +30,17 @@ public class TypePenaltyDAO {
 		return typepenaltyToUpdate;
 	}
 	
-	public void updateTypePenalty(TypePenalty typepenalty) {
-		TypePenalty typepenaltyToUpdate = instanceTypePenaltyDAO(typepenalty);
-		
-		getCurrentSession().update(typepenaltyToUpdate);	
+	public void updateTypePenalty(TypePenalty typepenalty) {		
+		getCurrentSession().update(instanceTypePenaltyDAO(typepenalty));	
 	}
 	
-	public TypePenalty getTypePenalty(int typePenaltyId) {
-		TypePenalty typepenalty = (TypePenalty) getCurrentSession().get(TypePenalty.class, typePenaltyId);
-		return typepenalty;
+	public TypePenalty getTypePenalty(int typePenaltyId) {		
+		return (TypePenalty) getCurrentSession().get(TypePenalty.class, typePenaltyId);
 	}
 
 	public void deleteTypePenalty(int typePenaltyId) {
 		TypePenalty typepenalty = getTypePenalty(typePenaltyId);
-		if (typepenalty != null)
-			getCurrentSession().delete(typepenalty);
+		if (typepenalty != null) getCurrentSession().delete(typepenalty);
 	}
 
 	@SuppressWarnings("unchecked")
