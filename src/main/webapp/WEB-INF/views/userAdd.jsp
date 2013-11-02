@@ -3,7 +3,7 @@
 <jsp:include page="header.jsp" flush="true">  
 <jsp:param name="title" value="Cadastro de Usuários"/>  
 </jsp:include> 						
-	 
+<p>${message}</p>
 <form:form method="POST" commandName="user" action="${pageContext.request.contextPath}/user/add.html" class="form-horizontal">									
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Nome </label>

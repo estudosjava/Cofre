@@ -1,16 +1,13 @@
 package br.com.cofrinho.dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import br.com.cofrinho.ConnectionFactory;
+
 import br.com.cofrinho.model.User;
 
 @Repository
@@ -27,7 +24,7 @@ public class UserDAO {
 		getCurrentSession().save(user);
 	}
 	
-	private User instanceUserDAO (User user) {
+	private User fillUser(User user) {
 		User userToUpdate = getUser(user.getUserId());				
 		userToUpdate.setUserTypeId(user.getUserTypeId());
 		userToUpdate.setTeamId(user.getTeamId());
@@ -38,7 +35,7 @@ public class UserDAO {
 	}
 	
 	public void updateUser(User user) {		
-		getCurrentSession().update(instanceUserDAO(user));		
+		getCurrentSession().update(fillUser(user));		
 	}
 
 	public User getUser(int userId) {		
@@ -55,36 +52,10 @@ public class UserDAO {
 		return getCurrentSession().createQuery("from User").list();
 	}
 	
-	public boolean checkUser(User user) {
-		Connection con = new ConnectionFactory().getConnection();	
-		ResultSet rs;
-
-		int numberOfRecords = 0;
-		boolean userExist = false;
-	
-		String query = "select * from usuarios \n";
-		query += "where login = '" + user.getLogin() + "' \n";
-		query += "and senha = '" + user.getPassword() + "'";
-	
-		try {	
-			Statement stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
-
-			while (rs.next()) {
-				numberOfRecords++;			
-			}
-			
-			if (numberOfRecords >= 1) {				
-				userExist = true;
-			}
-			
-			stmt.close();
-			con.close();
-
-		} catch (SQLException sqle) {		
-			System.out.println("Erro no select: " + sqle);
-		}		
-		return userExist;
+	public boolean checkUser(User user){
+		List exist = getCurrentSession().createCriteria(User.class).add(Example.create(user)).list();
+		if (exist.size() > 0) return true;
+		else return false;
 	}
 	
 }

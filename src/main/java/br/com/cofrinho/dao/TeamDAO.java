@@ -23,26 +23,23 @@ public class TeamDAO {
 		getCurrentSession().save(team);
 	}
 	
-	private Team instanceTeamDAO (Team team) {
+	private Team fillTeam(Team team) {
 		Team teamToUpdate = getTeam(team.getTeamId());
 		teamToUpdate.setName(team.getName());
 		return teamToUpdate;
 	}
 	
 	public void updateTeam(Team team) {
-		Team teamToUpdate = instanceTeamDAO(team);	
-		getCurrentSession().update(teamToUpdate);	
+		getCurrentSession().update(fillTeam(team));	
 	}
 	
 	public Team getTeam(int teamId) {
-		Team team = (Team) getCurrentSession().get(Team.class, teamId);
-		return team;
+		return (Team) getCurrentSession().get(Team.class, teamId);
 	}
 
 	public void deleteTeam(int teamId) {
 		Team team = getTeam(teamId);
-		if (team != null)
-			getCurrentSession().delete(team);
+		if (team != null) getCurrentSession().delete(team);
 	}
 
 	@SuppressWarnings("unchecked")

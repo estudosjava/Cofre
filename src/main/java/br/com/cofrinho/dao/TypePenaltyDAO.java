@@ -23,7 +23,7 @@ public class TypePenaltyDAO {
 		getCurrentSession().save(typepenalty);
 	}
 	
-	private TypePenalty instanceTypePenaltyDAO (TypePenalty typepenalty) {
+	private TypePenalty fillTypePenalty(TypePenalty typepenalty) {
 		TypePenalty typepenaltyToUpdate = getTypePenalty(typepenalty.getTypePenaltyId());
 		typepenaltyToUpdate.setDescription(typepenalty.getDescription());
 		typepenaltyToUpdate.setValue(typepenalty.getValue());
@@ -31,10 +31,11 @@ public class TypePenaltyDAO {
 	}
 	
 	public void updateTypePenalty(TypePenalty typepenalty) {		
-		getCurrentSession().update(instanceTypePenaltyDAO(typepenalty));	
+		getCurrentSession().update(fillTypePenalty(typepenalty));	
 	}
 	
 	public TypePenalty getTypePenalty(int typePenaltyId) {		
+
 		return (TypePenalty) getCurrentSession().get(TypePenalty.class, typePenaltyId);
 	}
 

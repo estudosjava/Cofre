@@ -41,27 +41,37 @@ public class UserController {
 		modelAndView.addObject("user",userService.getUser(userId));		
 		return modelAndView;
 	}
+	
 		
 	@RequestMapping(value="/delete/{userId}", method=RequestMethod.GET)
 	public ModelAndView deleteUser(@PathVariable Integer userId) throws IOException {
 		userService.deleteUser(userId);
-		return returnModel("register.deleted");
+		return returnModel("userList","register.deleted");
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView addingUser(@ModelAttribute User user) throws IOException {											
-		userService.addUser(user);		
-		return returnModel("register.added");
+		ModelAndView modelAndView = new ModelAndView("userList");		
+		try {
+			userService.addUser(user);			
+			modelAndView.addObject("users", userService.getUsers());
+			modelAndView.addObject("message", Util.getMessage("register.added"));			
+		} catch (Exception e) {
+			modelAndView = new ModelAndView("userAdd");
+			modelAndView.addObject("message", Util.getMessage("register.exists"));
+		}		
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{userId}", method=RequestMethod.POST)
 	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) throws IOException {		
+		ModelAndView modelAndView = new ModelAndView("userList");		
 		userService.updateUser(user);				
-		return returnModel("register.updated");
+		return returnModel("userList", "register.updated");
 	}
 	
-	public ModelAndView returnModel(String message) throws IOException{
-		ModelAndView modelAndView = new ModelAndView("userList");		
+	public ModelAndView returnModel(String page, String message) throws IOException{
+		ModelAndView modelAndView = new ModelAndView(page);		
 		modelAndView.addObject("message", Util.getMessage(message));	
 		modelAndView.addObject("users", userService.getUsers());
 		return modelAndView;
