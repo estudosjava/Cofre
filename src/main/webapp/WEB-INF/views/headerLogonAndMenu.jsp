@@ -28,7 +28,7 @@
 			<a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Multas <b class="caret"></b></a>
             <ul class="dropdown-menu">
             <li><a tabindex="-1" href="#">Cadastro</a></li>
-            <li><a tabindex="-1" href="#">Pesquisa</a></li>
+            <li><a tabindex="-1" href="${pageContext.request.contextPath}/penalty/listPenalty.html">Pesquisa</a></li>
             </ul>
             </li>
             <li class="dropdown"> 

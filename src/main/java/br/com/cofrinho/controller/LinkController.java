@@ -40,4 +40,5 @@ public class LinkController {
 	public ModelAndView cadastroTipoMultaView() {
 	    return new ModelAndView("typePenaltyAdd");
 	}
+	
 }
