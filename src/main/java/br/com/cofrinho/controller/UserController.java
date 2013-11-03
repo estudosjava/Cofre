@@ -64,8 +64,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/edit/{userId}", method=RequestMethod.POST)
-	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) throws IOException {		
-		ModelAndView modelAndView = new ModelAndView("userList");		
+	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) throws IOException {					
 		userService.updateUser(user);				
 		return returnModel("userList", "register.updated");
 	}

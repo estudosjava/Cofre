@@ -29,7 +29,7 @@
 			</div>
 			<div class="row-fluid">
 				<div class="span2"></div>
-				<div class="span10">
+				<div class="span2">
 					  <form action="validaUsuario" method="post" class="form-signin">
 				        <h2 class="form-signin-heading">Login</h2>
 				        

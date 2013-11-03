@@ -36,4 +36,8 @@ public class UserService {
 		return userDAO.getUsers();
 	}
 
+	public boolean checkUser(User user){
+		return userDAO.checkUser(user);
+	}
+	
 }
