@@ -38,19 +38,28 @@ public class TypePenaltyController {
 	@RequestMapping(value="/delete/{typePenaltyId}", method=RequestMethod.GET)
 	public ModelAndView deleteTypePenalty(@PathVariable Integer typePenaltyId) throws IOException {
 		typePenaltyService.deleteTypePenalty(typePenaltyId);
-		return returnModel("register.deleted");
+		return returnModel("typePenaltyList","register.deleted");
 	}
 	
 	@RequestMapping(value="/addTypePenalty", method=RequestMethod.POST)
 	public ModelAndView addingTypePenalty(@ModelAttribute TypePenalty typepenalty) throws IOException {		
-		typePenaltyService.addTypePenalty(typepenalty);			
-		return returnModel("register.added");
+		ModelAndView modelAndView = new ModelAndView("typePenaltyList");
+		try {
+			typePenaltyService.addTypePenalty(typepenalty);			
+			modelAndView.addObject("typepenaltys", typePenaltyService.getTypePenaltys());
+			modelAndView.addObject("message", Util.getMessage("register.added"));
+		} catch (Exception e) {
+			modelAndView = new ModelAndView("typePenaltyAdd");
+			//modelAndView.addObject("typepenaltys", typePenaltyService.getTypePenaltys());
+			modelAndView.addObject("message", Util.getMessage("register.exists"));
+		}
+		return modelAndView;
 	}			
 	
 	@RequestMapping(value="/edit/{typePenaltyId}", method=RequestMethod.POST)
 	public ModelAndView edditingTypePenalty(@ModelAttribute TypePenalty typePenalty, @PathVariable Integer typePenaltyId) throws IOException {		
 		typePenaltyService.updateTypePenalty(typePenalty);				
-		return returnModel("register.updated");
+		return returnModel("typePenaltyList","register.updated");
 	}
 	
 	@RequestMapping(value="/listTypePenalty")
@@ -60,8 +69,8 @@ public class TypePenaltyController {
 		return modelAndView;
 	}
 	
-	public ModelAndView returnModel(String message) throws IOException{
-		ModelAndView modelAndView = new ModelAndView("typePenaltyList");		
+	public ModelAndView returnModel(String page,String message) throws IOException{
+		ModelAndView modelAndView = new ModelAndView(page);		
 		modelAndView.addObject("message", Util.getMessage(message));	
 		modelAndView.addObject("typepenaltys", typePenaltyService.getTypePenaltys());
 		return modelAndView;
