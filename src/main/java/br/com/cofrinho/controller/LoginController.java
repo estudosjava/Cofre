@@ -17,7 +17,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/validaUsuario", method=RequestMethod.POST)
 	public String validateUser(@ModelAttribute User user){		
-		if (!userService.checkUser(user)) return "login";
-		else return "homepage";
+		if (userService.checkUser(user)) return "homepage";
+		else return "login";
 	}	
 }

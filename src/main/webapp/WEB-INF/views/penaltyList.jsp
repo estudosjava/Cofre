@@ -18,7 +18,7 @@
 	<tbody>
 		<c:forEach items="${penaltys}" var="penalty">
 			<tr>
-				<td style="width: 250px">${penalty.codUser}</td>
+				<td style="width: 250px">${penalty.user.name}</td>
 				<td style="width: 250px">${penalty.codTypePenalty}</td>
 				<td style="width: 250px">tp_usu</td>
 				<td style="width: 250px">vlr_mul</td>

@@ -1,9 +1,12 @@
 package br.com.cofrinho.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,7 +32,12 @@ public class User {
 	
 	@Column(name="senha", nullable= false)
 	private String password;
+	
+	
+	@OneToMany(mappedBy="user")
+    private Set<Penalty> penaltys;
 
+	
 	public Integer getUserId() {
 		return userId;
 	}
@@ -76,6 +84,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<Penalty> getPenaltys() {
+		return penaltys;
+	}
+
+	public void setPenaltys(Set<Penalty> penaltys) {
+		this.penaltys = penaltys;
 	}	
 	
 }

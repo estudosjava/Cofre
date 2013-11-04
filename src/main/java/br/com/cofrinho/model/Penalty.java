@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,9 +20,12 @@ public class Penalty {
 
 	@Column(name="cod_tipo_multa", nullable = false)
 	private String codTypePenalty;
-
-	@Column(name="cod_usuario", nullable = false)
-	private String codUser;
+	
+	@ManyToOne
+    @JoinColumn(name="cod_usuario")
+    private User user;
+	
+	
 
 	public Integer getPenaltyId(){
 		return penaltyId;
@@ -38,12 +43,12 @@ public class Penalty {
 		this.codTypePenalty = codTypePenalty;
 	}
 
-	public String getCodUser(){
-		return codUser;
+	public User getUser(){
+		return user;
 	}
 
-	public void setCodUser(String codUser){
-		this.codUser = codUser;
+	public void setUser(User user){
+		this.user = user;
 	}
 
 }
