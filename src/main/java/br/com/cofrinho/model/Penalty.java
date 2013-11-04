@@ -3,6 +3,7 @@ package br.com.cofrinho.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,14 +13,14 @@ public class Penalty {
 
 	@Id
 	@Column(name="cod_multa", nullable = false)
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer penaltyId;
 
 	@Column(name="cod_tipo_multa", nullable = false)
 	private String codTypePenalty;
 
-	@Column(name="valor", nullable = false)
-	private String value;
+	@Column(name="cod_usuario", nullable = false)
+	private String codUser;
 
 	public Integer getPenaltyId(){
 		return penaltyId;
@@ -37,12 +38,12 @@ public class Penalty {
 		this.codTypePenalty = codTypePenalty;
 	}
 
-	public String getValue(){
-		return value;
+	public String getCodUser(){
+		return codUser;
 	}
 
-	public void setValue(String value){
-		this.value = value;
+	public void setCodUser(String codUser){
+		this.codUser = codUser;
 	}
 
 }

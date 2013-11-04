@@ -30,7 +30,7 @@
 			<div class="row-fluid">
 				<div class="span2"></div>
 				<div class="span2">
-					  <form action="validaUsuario" method="post" class="form-signin">
+					  <form action="login/validaUsuario" method="post" class="form-signin">
 				        <h2 class="form-signin-heading">Login</h2>
 				        
 				        <div class="form-group has-error">

@@ -31,7 +31,7 @@
 			<div class="row-fluid">
 				<div class="span2"></div>
 				<div class="span2">
-					<form method="POST" action="validaUsuario" class="form-signin">
+					<form method="POST" action="login/validaUsuario" class="form-signin">
 				        <h2 class="form-signin-heading">Login</h2>
 				        <input type="text" name="login" id="login" class="form-control" placeholder="Usuário" autofocus="">
 				        <br>

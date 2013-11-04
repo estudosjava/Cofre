@@ -4,28 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.cofrinho.model.User;
 import br.com.cofrinho.service.UserService;
 
 @Controller
+@RequestMapping(value="/login")
 public class LoginController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/validaUsuario")
-	public String valida(@ModelAttribute User user) {
-		String telaRedirect;		
-		
-		boolean cadastrado = userService.checkUser(user);
-		
-		if (!cadastrado) {
-			telaRedirect = "login";
-		} else {
-			telaRedirect = "homepage";
-		}
-		
-		return telaRedirect;
-	}
-
+	@RequestMapping(value="/validaUsuario", method=RequestMethod.POST)
+	public String validateUser(@ModelAttribute User user){		
+		if (!userService.checkUser(user)) return "login";
+		else return "homepage";
+	}	
 }

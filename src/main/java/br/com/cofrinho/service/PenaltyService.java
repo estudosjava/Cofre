@@ -11,13 +11,16 @@ import br.com.cofrinho.model.Penalty;
 
 @Service
 @Transactional
-public class PenaltyService {
-	
+public class PenaltyService{
+
 	@Autowired
-	private PenaltyDAO PenaltyDAO;
-	
-	public List<Penalty> getPenaltys() {
-		return PenaltyDAO.getPenaltys();
+	private PenaltyDAO penaltyDAO;
+
+	public List<Penalty> getPenaltys(){
+		return penaltyDAO.getPenaltys();
 	}
 
+	public void deletePenalty(int penaltyId){
+		penaltyDAO.deletePenalty(penaltyId);
+	}
 }
