@@ -22,7 +22,7 @@
 	<div class="form-group">
 			<label class="col-lg-2 control-label">Descrição </label>
 		    <div class="col-lg-3">
-		       <form:input path="value" class="form-control" placeholder="Insira o valor" />		    				
+		       <form:input path="value" type="currency" class="form-control" placeholder="Insira o valor" />		    				
 			</div>	
 	</div>			
 	<div class="form-group">

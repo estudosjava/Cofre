@@ -1,10 +1,15 @@
 package br.com.cofrinho.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
 @Table(name="tipos_multa")
@@ -19,7 +24,8 @@ public class TypePenalty {
 	private String description;
 	
 	@Column(name="valor", nullable= false)
-	private Double value;
+	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
+	private BigDecimal value;
 
 	public Integer getTypePenaltyId() {
 		return typePenaltyId;
@@ -37,11 +43,11 @@ public class TypePenalty {
 		this.description = description;
 	}
 
-	public Double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
-	public void setValue(Double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 

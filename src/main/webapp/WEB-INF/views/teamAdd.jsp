@@ -4,12 +4,12 @@
 	<jsp:param name="title" value="Cadastro de Times"/>  
 </jsp:include> 	
 <p>${message}</p>
-<form method="POST" commandName="team" action="${pageContext.request.contextPath}/team/addTeam.html" class="form-horizontal" >
+<form:form method="POST" commandName="team" action="${pageContext.request.contextPath}/team/addTeam.html" class="form-horizontal" >
 	<fieldset>			
 		<div class="form-group">
  				<label class="col-lg-2 control-label" for="name">Nome:</label>
  				<div class="col-lg-3">
-   				<input id="name" name="name" type="text" placeholder="Insira o nome" class=form-control >
+   				<form:input path="name" type="text" placeholder="Insira o nome" class="form-control" />
  				</div>
 		</div>			
 		<div class="form-group">
@@ -19,6 +19,6 @@
 			  </div>
 		</div>
 	</fieldset>
-</form>				
+</form:form>				
 
 <jsp:include page="footer.jsp" flush="true"/>
