@@ -22,9 +22,11 @@ public class Team {
 	@Column(name="Nome", nullable= false)
 	private String name;
 	
+	/*
 	@OneToMany(mappedBy="team")
     private Set<User> users;
-
+	*/
+	
 	public Integer getTeamId() {
 		return teamId;
 	}
@@ -41,6 +43,7 @@ public class Team {
 		this.name = name;
 	}
 
+	/*
 	public Set<User> getUsers() {
 		return users;
 	}
@@ -48,6 +51,7 @@ public class Team {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+	*/
 	
 	
 	
