@@ -2,9 +2,12 @@ package br.com.cofrinho.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -52,12 +55,10 @@ public class UserDAO {
 		return getCurrentSession().createQuery("from User").list();
 	}
 	
-	@SuppressWarnings("rawtypes")
 	public boolean checkUser(User user){		
-		List exist = getCurrentSession().createCriteria(User.class).add(Example.create(user)).list();
-		if (exist.size() > 0) return true;
-		else return false;			
-
+		Criteria crit = getCurrentSession().createCriteria(User.class).add(Example.create(user));
+		int count = ((Number) crit.setProjection(Projections.rowCount()).uniqueResult()).intValue();
+		return (count > 0);
 	}
 	
 }
