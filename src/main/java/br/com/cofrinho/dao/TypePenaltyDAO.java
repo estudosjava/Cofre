@@ -34,8 +34,7 @@ public class TypePenaltyDAO {
 		getCurrentSession().update(fillTypePenalty(typepenalty));	
 	}
 	
-	public TypePenalty getTypePenalty(int typePenaltyId) {		
-
+	public TypePenalty getTypePenalty(int typePenaltyId) {
 		return (TypePenalty) getCurrentSession().get(TypePenalty.class, typePenaltyId);
 	}
 
