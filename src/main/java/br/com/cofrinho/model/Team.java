@@ -21,11 +21,9 @@ public class Team {
 	
 	@Column(name="Nome", nullable= false)
 	private String name;
-	
-	/*
+		
 	@OneToMany(mappedBy="team")
-    private Set<User> users;
-	*/
+    private Set<User> users;	
 	
 	public Integer getTeamId() {
 		return teamId;
@@ -42,17 +40,13 @@ public class Team {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	/*
+	
 	public Set<User> getUsers() {
 		return users;
 	}
 
 	public void setUsers(Set<User> users) {
 		this.users = users;
-	}
-	*/
-	
-	
+	}	
 	
 }

@@ -20,7 +20,7 @@
 			<tr>
 				<td style="width: 250px">${penalty.user.name}</td>
 				<td style="width: 250px">${penalty.typePenalty.description}</td>
-				<td style="width: 250px">penalty.user.team</td>
+				<td style="width: 250px">${penalty.user.team.name}</td>
 				<td style="width: 250px">R$ ${penalty.typePenalty.value}</td>
 				<td style="width: 250px">${penalty.expirationDate}</td>
 				<td><a href=""><img

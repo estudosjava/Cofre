@@ -6,7 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,7 +29,7 @@ public class UserDAO {
 	private User fillUser(User user) {
 		User userToUpdate = getUser(user.getUserId());				
 		userToUpdate.setUserTypeId(user.getUserTypeId());
-		userToUpdate.setTeamId(user.getTeamId());
+		userToUpdate.getTeam().setTeamId(user.getTeam().getTeamId());
 		userToUpdate.setLogin(user.getLogin());
 		userToUpdate.setName(user.getName());
 		userToUpdate.setPassword(user.getPassword());		

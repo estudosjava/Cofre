@@ -21,17 +21,14 @@ public class User {
 	private Integer userId;	
 	
 	@Column(name="cod_tipo_usuario", nullable= false)
-	private String userTypeId;
-		
-	/*
+	private String userTypeId;		
+	
 	@ManyToOne
     @JoinColumn(name="cod_equipe")
     private Team team;
-    */
-	
-	@Column(name="cod_equipe", nullable= false)
-	private Integer teamId;
-
+    	
+	/*@Column(name="cod_equipe", nullable= false)
+	private Integer teamId;*/
 	
 	@Column(nullable= false)
 	private String login;
@@ -93,7 +90,7 @@ public class User {
 		this.penaltys = penaltys;
 	}
 
-	/*
+	
 	public Team getTeam() {
 		return team;
 	}
@@ -101,14 +98,14 @@ public class User {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
-	*/
 	
-	public Integer getTeamId() {
+	
+	/*public Integer getTeamId() {
 		return teamId;
 	}
 
 	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
-	}
+	}*/
 	
 }
