@@ -1,10 +1,13 @@
 package br.com.cofrinho.model;
 
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +21,9 @@ public class Team {
 	
 	@Column(name="Nome", nullable= false)
 	private String name;
+	
+	@OneToMany(mappedBy="team")
+    private Set<User> users;
 
 	public Integer getTeamId() {
 		return teamId;
@@ -34,6 +40,15 @@ public class Team {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	
 	
 	
 }

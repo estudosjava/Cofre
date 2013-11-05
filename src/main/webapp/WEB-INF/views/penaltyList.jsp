@@ -4,14 +4,14 @@
 	<jsp:param name="title" value="Lista de Multas" />
 </jsp:include>
 <p>${message}</p>
-<table class="table table-striped" style="width:700px">
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Usuário</th>
 			<th>Tipo de multa</th>
 			<th>Time do usuário</th>
 			<th>Valor da multa</th>
-			<th>Data limite de pagamento</th>
+			<th>Data de vencimento</th>
 			<th colspan="2">&nbsp;</th>
 		</tr>
 	</thead>
@@ -19,14 +19,15 @@
 		<c:forEach items="${penaltys}" var="penalty">
 			<tr>
 				<td style="width: 250px">${penalty.user.name}</td>
-				<td style="width: 250px">${penalty.codTypePenalty}</td>
-				<td style="width: 250px">tp_usu</td>
-				<td style="width: 250px">vlr_mul</td>
-				<td style="width: 250px">dt_pgm</td>
+				<td style="width: 250px">${penalty.typePenalty.description}</td>
+				<td style="width: 250px">penalty.user.team</td>
+				<td style="width: 250px">R$ ${penalty.typePenalty.value}</td>
+				<td style="width: 250px">${penalty.expirationDate}</td>
 				<td><a href=""><img
 						src="/Cofre/resources/imagens/alterar.png" alt="Alterar" /></a></td>
 				<td><a href="${pageContext.request.contextPath}/penalty/delete/${penalty.penaltyId}.html">
-					<img src="/Cofre/resources/imagens/excluir.gif" alt="Remover" /></a></td>
+						<img src="/Cofre/resources/imagens/excluir.gif" alt="Remover" />
+				</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

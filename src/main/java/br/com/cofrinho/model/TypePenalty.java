@@ -1,11 +1,13 @@
 package br.com.cofrinho.model;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.NumberFormat;
@@ -26,6 +28,9 @@ public class TypePenalty {
 	@Column(name="valor", nullable= false)
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	private BigDecimal value;
+	
+	@OneToMany(mappedBy="typePenalty")
+    private Set<Penalty> penaltys;
 
 	public Integer getTypePenaltyId() {
 		return typePenaltyId;
@@ -51,4 +56,12 @@ public class TypePenalty {
 		this.value = value;
 	}
 
+	public Set<Penalty> getPenaltys() {
+		return penaltys;
+	}
+
+	public void setPenaltys(Set<Penalty> penaltys) {
+		this.penaltys = penaltys;
+	}
+	
 }

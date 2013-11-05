@@ -1,5 +1,7 @@
 package br.com.cofrinho.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,18 +16,20 @@ import javax.persistence.Table;
 public class Penalty {
 
 	@Id
-	@Column(name="cod_multa", nullable = false)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="cod_multa", nullable=false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer penaltyId;
 
-	@Column(name="cod_tipo_multa", nullable = false)
-	private String codTypePenalty;
-	
 	@ManyToOne
-    @JoinColumn(name="cod_usuario")
-    private User user;
-	
-	
+	@JoinColumn(name="cod_tipo_multa")
+	private TypePenalty typePenalty;
+
+	@ManyToOne
+	@JoinColumn(name="cod_usuario")
+	private User user;
+
+	@Column(name="data_vencimento")
+	private Date expirationDate;
 
 	public Integer getPenaltyId(){
 		return penaltyId;
@@ -33,14 +37,6 @@ public class Penalty {
 
 	public void setPenaltyId(Integer penaltyId){
 		this.penaltyId = penaltyId;
-	}
-
-	public String getCodTypePenalty(){
-		return codTypePenalty;
-	}
-
-	public void setCodTypePenalty(String codTypePenalty){
-		this.codTypePenalty = codTypePenalty;
 	}
 
 	public User getUser(){
@@ -51,4 +47,19 @@ public class Penalty {
 		this.user = user;
 	}
 
+	public TypePenalty getTypePenalty(){
+		return typePenalty;
+	}
+
+	public void setTypePenalty(TypePenalty typePenalty){
+		this.typePenalty = typePenalty;
+	}
+
+	public Date getExpirationDate(){
+		return expirationDate;
+	}
+
+	public void setExpirationDate(Date expirationDate){
+		this.expirationDate = expirationDate;
+	}
 }

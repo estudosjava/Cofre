@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,9 +22,16 @@ public class User {
 	
 	@Column(name="cod_tipo_usuario", nullable= false)
 	private String userTypeId;
+		
+	/*
+	@ManyToOne
+    @JoinColumn(name="cod_equipe")
+    private Team team;
+    */
 	
 	@Column(name="cod_equipe", nullable= false)
 	private Integer teamId;
+
 	
 	@Column(nullable= false)
 	private String login;
@@ -33,11 +42,9 @@ public class User {
 	@Column(name="senha", nullable= false)
 	private String password;
 	
-	
 	@OneToMany(mappedBy="user")
     private Set<Penalty> penaltys;
 
-	
 	public Integer getUserId() {
 		return userId;
 	}
@@ -52,14 +59,6 @@ public class User {
 
 	public void setUserTypeId(String userTypeId) {
 		this.userTypeId = userTypeId;
-	}
-
-	public Integer getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(Integer teamId) {
-		this.teamId = teamId;
 	}
 
 	public String getLogin() {
@@ -92,6 +91,24 @@ public class User {
 
 	public void setPenaltys(Set<Penalty> penaltys) {
 		this.penaltys = penaltys;
-	}	
+	}
+
+	/*
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+	*/
+	
+	public Integer getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(Integer teamId) {
+		this.teamId = teamId;
+	}
 	
 }

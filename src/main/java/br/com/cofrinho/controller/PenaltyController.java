@@ -14,7 +14,7 @@ import br.com.cofrinho.utils.Util;
 
 @Controller
 @RequestMapping(value="/penalty")
-public class PenaltyController {
+public class PenaltyController{
 
 	@Autowired
 	private PenaltyService penaltyService;

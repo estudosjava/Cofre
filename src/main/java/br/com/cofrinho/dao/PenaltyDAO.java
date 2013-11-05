@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import br.com.cofrinho.model.Penalty;
 
 @Repository
-public class PenaltyDAO{
+public class PenaltyDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
