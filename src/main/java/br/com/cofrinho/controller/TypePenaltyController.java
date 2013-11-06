@@ -42,22 +42,13 @@ public class TypePenaltyController {
 	}
 	
 	@RequestMapping(value="/addTypePenalty", method=RequestMethod.POST)
-	public ModelAndView addingTypePenalty(@ModelAttribute TypePenalty typepenalty) throws IOException {		
-		ModelAndView modelAndView = new ModelAndView("typePenaltyList");
-		try {
-			typePenaltyService.addTypePenalty(typepenalty);			
-			modelAndView.addObject("typepenaltys", typePenaltyService.getTypePenaltys());
-			modelAndView.addObject("message", Util.getMessage("register.added"));
-		} catch (Exception e) {
-			modelAndView = new ModelAndView("typePenaltyAdd");
-			//modelAndView.addObject("typepenaltys", typePenaltyService.getTypePenaltys());
-			modelAndView.addObject("message", Util.getMessage("register.exists"));
-		}
-		return modelAndView;
+	public ModelAndView addingTypePenalty(@ModelAttribute TypePenalty typepenalty) throws IOException {				
+		typePenaltyService.addTypePenalty(typepenalty);	
+		return returnModel("typePenaltyList", "register.added");		
 	}			
 	
 	@RequestMapping(value="/edit/{typePenaltyId}", method=RequestMethod.POST)
-	public ModelAndView edditingTypePenalty(@ModelAttribute TypePenalty typePenalty, @PathVariable Integer typePenaltyId) throws IOException {		
+	public ModelAndView edditingTypePenalty(@ModelAttribute TypePenalty typePenalty, @PathVariable Integer typePenaltyId) throws IOException {
 		typePenaltyService.updateTypePenalty(typePenalty);				
 		return returnModel("typePenaltyList","register.updated");
 	}
