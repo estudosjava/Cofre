@@ -9,7 +9,7 @@
 		<div class="form-group">
  				<label class="col-lg-2 control-label" for="description">Descrição:</label>
  				<div class="col-lg-3">
-   				<form:textarea path="description" placeholder="Insira a descrição" class="form-control"></form:textarea>
+   				<form:textarea path="description" type="text" placeholder="Insira a descrição" class="form-control"></form:textarea>
  				</div>
 		</div>
 		<div class="form-group">

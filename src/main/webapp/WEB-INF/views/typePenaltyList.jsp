@@ -18,8 +18,8 @@
                 <c:forEach items="${typepenaltys}" var="typepenalty">
                   <tr>
                     <td style="width: 250px">${typepenalty.description}</td>
-                    <td style="width: 250px">
-                    <fmt:formatNumber value="${typepenalty.value}" minFractionDigits="2" type="currency"/>
+                    <td style="width: 250px">R$
+                    <fmt:formatNumber value="${typepenalty.value}" minFractionDigits="2" type="number"/>
                     </td>
                     <td><a href="${pageContext.request.contextPath}/typepenalty/edit/${typepenalty.typePenaltyId}.html"><img src="/Cofre/resources/imagens/alterar.png" alt="Alterar"/></a></td>
                     <td><a href="${pageContext.request.contextPath}/typepenalty/delete/${typepenalty.typePenaltyId}.html"><img src="/Cofre/resources/imagens/excluir.gif" alt="Remover"/></a></td>

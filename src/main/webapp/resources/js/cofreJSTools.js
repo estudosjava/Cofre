@@ -12,5 +12,5 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $("input#value").maskMoney({showSymbol:false, decimal:",", thousands:"."});
+    $("input#value").maskMoney({showSymbol:false, decimal:".", thousands:""});
 });

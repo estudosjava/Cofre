@@ -2,9 +2,7 @@
 <jsp:include page="header.jsp" flush="true">  
 	<jsp:param name="title" value="Edição de Tipos de Multa"/>  
 </jsp:include> 	
-
 <p>${message}</p>
-
 <form:form method="POST" commandName="typepenalty" action="${pageContext.request.contextPath}/typepenalty/edit/${typepenalty.typePenaltyId}.html" class="form-horizontal" >		
 	<div class="form-group">
 			<label class="col-lg-2 control-label">Descrição </label>
@@ -20,7 +18,7 @@
 			</div>	
 	</div> --%>
 	<div class="form-group">
-			<label class="col-lg-2 control-label">Descrição </label>
+			<label class="col-lg-2 control-label">Valor </label>
 		    <div class="col-lg-3">
 		       <form:input path="value" type="currency" class="form-control" placeholder="Insira o valor" />		    				
 			</div>	
