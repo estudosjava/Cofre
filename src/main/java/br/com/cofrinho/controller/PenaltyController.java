@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.service.PenaltyService;
-import br.com.cofrinho.utils.Util;
+import br.com.cofrinho.utils.LoadDefaultMessage;
 
 @Controller
 @RequestMapping(value="/penalty")
@@ -33,8 +33,9 @@ public class PenaltyController{
 	}
 
 	public ModelAndView returnModel(String message) throws IOException{
-		ModelAndView modelAndView = new ModelAndView("penaltyList");
-		modelAndView.addObject("message", Util.getMessage(message));
+		ModelAndView modelAndView = new ModelAndView("penaltyList");		
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
+		modelAndView.addObject("message",loadDefaultMessage.getMessage(message));	
 		modelAndView.addObject("penaltys", penaltyService.getPenaltys());
 		return modelAndView;
 	}

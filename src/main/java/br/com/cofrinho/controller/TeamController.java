@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.model.Team;
 import br.com.cofrinho.service.TeamService;
-import br.com.cofrinho.utils.Util;
+import br.com.cofrinho.utils.LoadDefaultMessage;
 
 
 @Controller
@@ -48,33 +48,28 @@ public class TeamController {
 	@RequestMapping(value="/addTeam", method=RequestMethod.POST)
 	public ModelAndView addingTeam(@ModelAttribute Team team) throws IOException {		
 		ModelAndView modelAndView = new ModelAndView("teamList");
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();				
 		try {
-			teamService.addTeam(team);
+			teamService.addTeam(team);						
 			modelAndView.addObject("teams", getListTeams());
-			modelAndView.addObject("message", Util.getMessage("register.added"));				
+			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.added"));					
 		} catch (Exception e) {
 			modelAndView = new ModelAndView("teamAdd");
-			modelAndView.addObject("message", Util.getMessage("register.exists"));
+			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.exists"));
 		}
 		return modelAndView;
 	}
 		
 	@RequestMapping(value="/edit/{teamId}", method=RequestMethod.POST)
-	public ModelAndView edditingTeam(@ModelAttribute Team team, @PathVariable Integer teamId) throws IOException {		
-		ModelAndView modelAndView = new ModelAndView("teamList");
-		teamService.updateTeam(team);
-		modelAndView.addObject("teams", getListTeams());
-		modelAndView.addObject("message", Util.getMessage("register.updated"));		
-		return modelAndView;
+	public ModelAndView edditingTeam(@ModelAttribute Team team, @PathVariable Integer teamId) throws IOException {				
+		teamService.updateTeam(team);		
+		return returnModel("register.updated");
 	}
 	
 	@RequestMapping(value="/delete/{teamId}", method=RequestMethod.GET)
-	public ModelAndView deleteTeam(@PathVariable Integer teamId) throws IOException {
-		ModelAndView modelAndView = new ModelAndView("teamList");
+	public ModelAndView deleteTeam(@PathVariable Integer teamId) throws IOException {		
 		teamService.deleteTeam(teamId);
-		modelAndView.addObject("teams", getListTeams());
-		modelAndView.addObject("message", Util.getMessage("register.deleted"));
-		return modelAndView;
+		return returnModel("register.deleted");
 	}
 	
 	public List<Team> getListTeams(){
@@ -82,5 +77,11 @@ public class TeamController {
 		return teams;
 	}
 	
-	
+	public ModelAndView returnModel(String message) throws IOException{
+		ModelAndView modelAndView = new ModelAndView("teamList");		
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
+		modelAndView.addObject("message",loadDefaultMessage.getMessage(message));	
+		modelAndView.addObject("teams", teamService.getTeams());
+		return modelAndView;
+	}
 }

@@ -12,14 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.model.TypePenalty;
 import br.com.cofrinho.service.TypePenaltyService;
-import br.com.cofrinho.utils.Util;
+import br.com.cofrinho.utils.LoadDefaultMessage;
 
 @Controller
 @RequestMapping(value="/typepenalty")
 public class TypePenaltyController {
 
 	@Autowired
-	private TypePenaltyService typePenaltyService;
+	private TypePenaltyService typePenaltyService;				
 	
 	@RequestMapping(value="/addTypePenalty", method=RequestMethod.GET)
 	public ModelAndView addTypePenaltyPage() {
@@ -38,19 +38,19 @@ public class TypePenaltyController {
 	@RequestMapping(value="/delete/{typePenaltyId}", method=RequestMethod.GET)
 	public ModelAndView deleteTypePenalty(@PathVariable Integer typePenaltyId) throws IOException {
 		typePenaltyService.deleteTypePenalty(typePenaltyId);
-		return returnModel("typePenaltyList","register.deleted");
+		return returnModel("register.deleted");
 	}
 	
 	@RequestMapping(value="/addTypePenalty", method=RequestMethod.POST)
 	public ModelAndView addingTypePenalty(@ModelAttribute TypePenalty typepenalty) throws IOException {				
-		typePenaltyService.addTypePenalty(typepenalty);	
-		return returnModel("typePenaltyList", "register.added");		
+		typePenaltyService.addTypePenalty(typepenalty);			
+		return returnModel("register.added");		
 	}			
 	
 	@RequestMapping(value="/edit/{typePenaltyId}", method=RequestMethod.POST)
-	public ModelAndView edditingTypePenalty(@ModelAttribute TypePenalty typePenalty, @PathVariable Integer typePenaltyId) throws IOException {
+	public ModelAndView edditingTypePenalty(@ModelAttribute TypePenalty typePenalty, @PathVariable Integer typePenaltyId) throws IOException {		
 		typePenaltyService.updateTypePenalty(typePenalty);				
-		return returnModel("typePenaltyList","register.updated");
+		return returnModel("register.updated");
 	}
 	
 	@RequestMapping(value="/listTypePenalty")
@@ -60,9 +60,10 @@ public class TypePenaltyController {
 		return modelAndView;
 	}
 	
-	public ModelAndView returnModel(String page,String message) throws IOException{
-		ModelAndView modelAndView = new ModelAndView(page);		
-		modelAndView.addObject("message", Util.getMessage(message));	
+	public ModelAndView returnModel(String message) throws IOException{
+		ModelAndView modelAndView = new ModelAndView("typePenaltyList");		
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
+		modelAndView.addObject("message",loadDefaultMessage.getMessage(message));		
 		modelAndView.addObject("typepenaltys", typePenaltyService.getTypePenaltys());
 		return modelAndView;
 	}

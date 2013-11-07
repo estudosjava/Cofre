@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.model.User;
 import br.com.cofrinho.service.UserService;
-import br.com.cofrinho.utils.Util;
+import br.com.cofrinho.utils.LoadDefaultMessage;
 
 @Controller
 @RequestMapping(value="/user")
@@ -46,19 +46,21 @@ public class UserController {
 	@RequestMapping(value="/delete/{userId}", method=RequestMethod.GET)
 	public ModelAndView deleteUser(@PathVariable Integer userId) throws IOException {
 		userService.deleteUser(userId);
-		return returnModel("userList","register.deleted");
+		return returnModel("register.deleted");
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView addingUser(@ModelAttribute User user) throws IOException {											
-		ModelAndView modelAndView = new ModelAndView("userList");		
+		ModelAndView modelAndView = new ModelAndView("userList");
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
 		try {
 			userService.addUser(user);			
-			modelAndView.addObject("users", userService.getUsers());
-			modelAndView.addObject("message", Util.getMessage("register.added"));			
+			modelAndView.addObject("users", userService.getUsers());					
+			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.added"));
+			
 		} catch (Exception e) {
-			modelAndView = new ModelAndView("userAdd");
-			modelAndView.addObject("message", Util.getMessage("register.exists"));
+			modelAndView = new ModelAndView("userAdd");			
+			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.exists"));
 		}		
 		return modelAndView;
 	}
@@ -66,12 +68,13 @@ public class UserController {
 	@RequestMapping(value="/edit/{userId}", method=RequestMethod.POST)
 	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) throws IOException {					
 		userService.updateUser(user);				
-		return returnModel("userList", "register.updated");
+		return returnModel("register.updated");
 	}
 	
-	public ModelAndView returnModel(String page, String message) throws IOException{
-		ModelAndView modelAndView = new ModelAndView(page);		
-		modelAndView.addObject("message", Util.getMessage(message));	
+	public ModelAndView returnModel(String message) throws IOException{
+		ModelAndView modelAndView = new ModelAndView("userList");		
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
+		modelAndView.addObject("message",loadDefaultMessage.getMessage(message));	
 		modelAndView.addObject("users", userService.getUsers());
 		return modelAndView;
 	}
