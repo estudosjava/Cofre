@@ -16,6 +16,18 @@ public class PenaltyService{
 	@Autowired
 	private PenaltyDAO penaltyDAO;
 
+	public void addPenalty(Penalty penalty) {
+		penaltyDAO.addPenalty(penalty);		
+	}
+
+	public void updatePenalty(Penalty penalty) {
+		penaltyDAO.updatePenalty(penalty);
+	}
+	
+	public Penalty getPenalty(int penaltyId) {
+		return penaltyDAO.getPenalty(penaltyId);
+	}
+	
 	public List<Penalty> getPenaltys(){
 		return penaltyDAO.getPenaltys();
 	}
@@ -23,4 +35,5 @@ public class PenaltyService{
 	public void deletePenalty(int penaltyId){
 		penaltyDAO.deletePenalty(penaltyId);
 	}
+			
 }

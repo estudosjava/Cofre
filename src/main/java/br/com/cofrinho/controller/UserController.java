@@ -40,8 +40,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView("userEdit");		
 		modelAndView.addObject("user",userService.getUser(userId));		
 		return modelAndView;
-	}
-	
+	}	
 		
 	@RequestMapping(value="/delete/{userId}", method=RequestMethod.GET)
 	public ModelAndView deleteUser(@PathVariable Integer userId) throws IOException {

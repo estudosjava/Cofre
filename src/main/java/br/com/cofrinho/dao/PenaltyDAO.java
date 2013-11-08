@@ -18,12 +18,32 @@ public class PenaltyDAO {
 	private Session getCurrentSession(){
 		return sessionFactory.getCurrentSession();
 	}
-
+	
+	public void addPenalty(Penalty penalty) {
+		getCurrentSession().save(penalty);
+	}
+	
+	private Penalty fillPenalty(Penalty penalty) {
+		Penalty penaltyToUpdate = getPenalty(penalty.getPenaltyId());				
+		penaltyToUpdate.getTypePenalty().setTypePenaltyId(penalty.getPenaltyId());
+		penaltyToUpdate.setExpirationDate(penalty.getExpirationDate());
+		penaltyToUpdate.getUser().setUserId(penalty.getUser().getUserId());							
+		return penaltyToUpdate;
+	}
+	
+	public void updatePenalty(Penalty penalty) {		
+		getCurrentSession().update(fillPenalty(penalty));		
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Penalty> getPenaltys(){
 		return getCurrentSession().createQuery("from Penalty").list();
 	}
 
+//	public List<User> getUsers(){
+//		return getCurrentSession().createQuery("from Users").list();
+//	}
+	
 	public Penalty getPenalty(int penaltyId){
 		return (Penalty) getCurrentSession().get(Penalty.class, penaltyId);
 	}
@@ -32,4 +52,5 @@ public class PenaltyDAO {
 		Penalty penalty = getPenalty(penaltyId);
 		if (penalty != null) getCurrentSession().delete(penalty);
 	}
+	
 }

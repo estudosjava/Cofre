@@ -41,5 +41,4 @@
 		</div>
 	</div>
 </form:form>
-<p><a href="${pageContext.request.contextPath}/userMaintenance.html">Manutenção de Usuários</a></p>
 <jsp:include page="footer.jsp" flush="true"/>
