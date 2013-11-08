@@ -23,7 +23,7 @@
 				<td>${user.login}</td>
 				<td>${user.password}</td>
 				<td>${user.userTypeId}</td>
-				<td>${user.teamId}</td>
+				<td>${user.team.name}</td>
 				<td>
 					<a href="${pageContext.request.contextPath}/user/edit/${user.userId}.html"><img src="/Cofre/resources/imagens/alterar.png" alt="Editar"/></a>
 				</td>
