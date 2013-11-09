@@ -11,7 +11,7 @@
 			<th width="10%">Login</th>
 			<th width="10%">Senha</th>
 			<th width="10%">Tipo de Usuário</th>
-			<th width="10%">Equipe</th>		
+			<th width="10%">Time</th>		
 			<th width="2%"></th>
 			<th width="2%"></th>
 		</tr>

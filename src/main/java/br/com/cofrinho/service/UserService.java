@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cofrinho.dao.UserDAO;
+import br.com.cofrinho.model.Team;
 import br.com.cofrinho.model.User;
 
 @Service
@@ -34,6 +35,10 @@ public class UserService {
 
 	public List<User> getUsers() {
 		return userDAO.getUsers();
+	}
+	
+	public List<Team> getTeams() {
+		return userDAO.getTeams();
 	}
 
 	public boolean checkUser(User user){

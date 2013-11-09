@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp" flush="true">  
@@ -32,7 +33,12 @@
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Time </label>
       <div class="col-lg-3">
-      	<form:input path="teamId" type="text" class="form-control" placeholder="Insira o time" />		    				
+      	<form:select path="team.teamId" class="form-control" required="True">
+      	   <form:option value="">Selecione...</form:option>
+      	   <c:forEach items="${teams}" var="team">      	     
+      	     <form:option value="${team.teamId}">${team.name}</form:option>
+      	   </c:forEach>
+      	</form:select>		    				
 	  </div>					  
 	</div>
 	<div class="form-group">

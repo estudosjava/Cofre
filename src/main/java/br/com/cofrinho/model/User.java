@@ -27,8 +27,8 @@ public class User {
     @JoinColumn(name="cod_equipe")
     private Team team;
     	
-	/*@Column(name="cod_equipe", nullable= false)
-	private Integer teamId;*/
+//	@Column(name="cod_equipe", nullable= false)
+//	private Integer teamId;
 	
 	@Column(nullable= false)
 	private String login;
@@ -89,7 +89,6 @@ public class User {
 	public void setPenaltys(Set<Penalty> penaltys) {
 		this.penaltys = penaltys;
 	}
-
 	
 	public Team getTeam() {
 		return team;
@@ -98,14 +97,5 @@ public class User {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
-	
-	
-	/*public Integer getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(Integer teamId) {
-		this.teamId = teamId;
-	}*/
-	
+		
 }

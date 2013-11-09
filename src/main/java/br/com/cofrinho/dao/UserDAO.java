@@ -10,6 +10,7 @@ import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import br.com.cofrinho.model.Team;
 import br.com.cofrinho.model.User;
 
 @Repository
@@ -52,6 +53,11 @@ public class UserDAO {
 	@SuppressWarnings("unchecked")
 	public List<User> getUsers() {
 		return getCurrentSession().createQuery("from User").list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Team> getTeams() {
+		return getCurrentSession().createQuery("from Team").list();
 	}
 	
 	public boolean checkUser(User user){		
