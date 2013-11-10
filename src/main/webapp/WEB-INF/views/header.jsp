@@ -14,7 +14,8 @@
 	<script type="text/javascript" src="/Cofre/resources/js/jquery.js"></script>
 	<script type="text/javascript" src="/Cofre/resources/js/bootstrap-dropdown.js"></script>
 	<script type="text/javascript" src="/Cofre/resources/js/cofreJSTools.js"></script>
-	<script type="text/javascript" src="/Cofre/resources/js/jquery.maskMoney.js" ></script>	
+	<script type="text/javascript" src="/Cofre/resources/js/jquery.maskMoney.js" ></script>
+	<script type="text/javascript" src="/Cofre/resources/js/convertDate.js" ></script>		
 	<%
 		String title = request.getParameter("title");
 	%>
