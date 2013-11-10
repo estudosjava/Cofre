@@ -18,15 +18,16 @@ public class User {
 	@Id
 	@Column(name="cod_usuario", nullable= false)
 	@GeneratedValue	
-	private Integer userId;	
-	
-	@Column(name="cod_tipo_usuario", nullable= false)
-	private String userTypeId;		
+	private Integer userId;			
 	
 	@ManyToOne
     @JoinColumn(name="cod_equipe")
     private Team team;
-    	
+    
+	@ManyToOne
+	@JoinColumn(name="cod_tipo_usuario")
+	private UserType userType; 
+	
 //	@Column(name="cod_equipe", nullable= false)
 //	private Integer teamId;
 	
@@ -42,6 +43,9 @@ public class User {
 	@OneToMany(mappedBy="user")
     private Set<Penalty> penaltys;
 
+//	@OneToMany(mappedBy="user")
+//    private Set<UserType> userType;
+	
 	public Integer getUserId() {
 		return userId;
 	}
@@ -50,12 +54,12 @@ public class User {
 		this.userId = userId;
 	}
 
-	public String getUserTypeId() {
-		return userTypeId;
+	public UserType getUserType() {
+		return userType;
 	}
 
-	public void setUserTypeId(String userTypeId) {
-		this.userTypeId = userTypeId;
+	public void setUserType(UserType userType) {
+		this.userType = userType;
 	}
 
 	public String getLogin() {

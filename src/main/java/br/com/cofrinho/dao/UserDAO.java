@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.cofrinho.model.Team;
 import br.com.cofrinho.model.User;
+import br.com.cofrinho.model.UserType;
 
 @Repository
 public class UserDAO {
@@ -29,7 +30,7 @@ public class UserDAO {
 	
 	private User fillUser(User user) {
 		User userToUpdate = getUser(user.getUserId());				
-		userToUpdate.setUserTypeId(user.getUserTypeId());
+		userToUpdate.getUserType().setUserTypeCode(user.getUserType().getUserTypeCode());
 		userToUpdate.getTeam().setTeamId(user.getTeam().getTeamId());
 		userToUpdate.setLogin(user.getLogin());
 		userToUpdate.setName(user.getName());
@@ -58,6 +59,11 @@ public class UserDAO {
 	@SuppressWarnings("unchecked")
 	public List<Team> getTeams() {
 		return getCurrentSession().createQuery("from Team").list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<UserType> getUserTypes() {
+		return getCurrentSession().createQuery("from UserType").list();
 	}
 	
 	public boolean checkUser(User user){		

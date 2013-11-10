@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.model.Team;
 import br.com.cofrinho.model.User;
+import br.com.cofrinho.model.UserType;
 import br.com.cofrinho.service.UserService;
 import br.com.cofrinho.utils.LoadDefaultMessage;
 
@@ -27,6 +28,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView("userAdd");
 		modelAndView.addObject("user", new User());
 		modelAndView.addObject("teams", userService.getTeams());
+		modelAndView.addObject("userTypes", userService.getUserTypes());
 		return modelAndView;
 	}
 	
@@ -40,7 +42,9 @@ public class UserController {
 	@RequestMapping(value="/edit/{userId}", method=RequestMethod.GET)
 	public ModelAndView editUserPage(@PathVariable Integer userId) {
 		ModelAndView modelAndView = new ModelAndView("userEdit");		
-		modelAndView.addObject("user",userService.getUser(userId));		
+		modelAndView.addObject("user",userService.getUser(userId));
+		modelAndView.addObject("teams", userService.getTeams());
+		modelAndView.addObject("userTypes", userService.getUserTypes());
 		return modelAndView;
 	}	
 		
@@ -51,7 +55,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingUser(@ModelAttribute User user, Team team) throws IOException {											
+	public ModelAndView addingUser(@ModelAttribute User user, Team team, UserType userType) throws IOException {											
 		ModelAndView modelAndView = new ModelAndView("userList");
 		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
 		try {

@@ -9,25 +9,30 @@
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Nome </label>
       <div class="col-lg-3">
-      	<form:input path="name" class="form-control" placeholder="Insira o nome" />		    				
+      	<form:input path="name" class="form-control" placeholder="Insira o nome" required="True"/>		    				
 	  </div>					  
 	</div>	
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Login </label>
       <div class="col-lg-3">
-      	<form:input path="login" type="text" class="form-control" placeholder="Insira o login" />		    				
+      	<form:input path="login" type="text" class="form-control" placeholder="Insira o login" required="True"/>		    				
 	  </div>					  
 	</div>
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Senha </label>
       <div class="col-lg-3">
-      	<form:input path="password" type="text" class="form-control" placeholder="Insira o senha" />		    				
+      	<form:input path="password" type="text" class="form-control" placeholder="Insira o senha" required="True" />		    				
 	  </div>					  
 	</div>
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Tipo de Usuário </label>
       <div class="col-lg-3">
-      	<form:input path="userTypeId" type="text" class="form-control" placeholder="Insira o tipo de usuário" />		    				
+      	<form:select path="userType.userTypeCode" class="form-control" required="True">
+      	  <form:option value="">Selecione...</form:option>
+      	   <c:forEach items="${userTypes}" var="userType">      	     
+      	     <form:option value="${userType.userTypeCode}">${userType.description}</form:option>
+      	   </c:forEach>
+      	</form:select>		    				
 	  </div>					  
 	</div>	
 	<div class="form-group">					

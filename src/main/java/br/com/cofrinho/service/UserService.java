@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.cofrinho.dao.UserDAO;
 import br.com.cofrinho.model.Team;
 import br.com.cofrinho.model.User;
+import br.com.cofrinho.model.UserType;
 
 @Service
 @Transactional
@@ -41,6 +42,10 @@ public class UserService {
 		return userDAO.getTeams();
 	}
 
+	public List<UserType> getUserTypes() {
+		return userDAO.getUserTypes();
+	}
+	
 	public boolean checkUser(User user){
 		return userDAO.checkUser(user);
 	}
