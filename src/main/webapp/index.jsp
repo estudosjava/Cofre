@@ -33,7 +33,7 @@
 				<div class="span2">
 					<form method="POST" action="login/validaUsuario" class="form-signin">
 				        <h2 class="form-signin-heading">Login</h2>
-				        <input type="text" name="login" id="login" class="form-control" placeholder="Usuário" autofocus="">
+				        <input type="text" name="login" id="login" class="form-control" placeholder="Usuário" autofocus="autofocus">
 				        <br>
 				        <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
 				        <br>

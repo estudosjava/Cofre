@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cofrinho.dao.PenaltyDAO;
 import br.com.cofrinho.model.Penalty;
+import br.com.cofrinho.model.TypePenalty;
+import br.com.cofrinho.model.User;
 
 @Service
 @Transactional
@@ -32,6 +34,13 @@ public class PenaltyService{
 		return penaltyDAO.getPenaltys();
 	}
 
+	public List<User> getUsers(){
+		return penaltyDAO.getUsers();
+	}
+	
+	public List<TypePenalty> getTypePenaltys(){
+		return penaltyDAO.getTypePenaltys();
+	}
 	public void deletePenalty(int penaltyId){
 		penaltyDAO.deletePenalty(penaltyId);
 	}

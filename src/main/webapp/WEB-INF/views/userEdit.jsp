@@ -26,8 +26,7 @@
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Tipo de Usuário </label>
       <div class="col-lg-3">
-      	<form:select path="userType.userTypeCode" class="form-control" required="True">
-      	  <form:option value="">Selecione...</form:option>
+      	<form:select path="userType.userTypeCode" class="form-control" required="True">      	  
       	   <c:forEach items="${userTypes}" var="userType">      	     
       	     <form:option value="${userType.userTypeCode}">${userType.description}</form:option>
       	   </c:forEach>
@@ -37,8 +36,7 @@
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Time </label>
       <div class="col-lg-3">
-      	<form:select path="team.teamId" class="form-control" required="True">
-      	   <form:option value="">Selecione...</form:option>
+      	<form:select path="team.teamId" class="form-control" required="True">      	   
       	   <c:forEach items="${teams}" var="team">      	     
       	     <form:option value="${team.teamId}">${team.name}</form:option>
       	   </c:forEach>

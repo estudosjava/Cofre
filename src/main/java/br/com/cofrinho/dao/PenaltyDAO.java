@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.cofrinho.model.Penalty;
+import br.com.cofrinho.model.TypePenalty;
+import br.com.cofrinho.model.User;
 
 @Repository
 public class PenaltyDAO {
@@ -25,7 +27,7 @@ public class PenaltyDAO {
 	
 	private Penalty fillPenalty(Penalty penalty) {
 		Penalty penaltyToUpdate = getPenalty(penalty.getPenaltyId());				
-		penaltyToUpdate.getTypePenalty().setTypePenaltyId(penalty.getPenaltyId());
+		penaltyToUpdate.getTypePenalty().setTypePenaltyId(penalty.getTypePenalty().getTypePenaltyId());
 		penaltyToUpdate.setExpirationDate(penalty.getExpirationDate());
 		penaltyToUpdate.getUser().setUserId(penalty.getUser().getUserId());							
 		return penaltyToUpdate;
@@ -40,9 +42,15 @@ public class PenaltyDAO {
 		return getCurrentSession().createQuery("from Penalty").list();
 	}
 
-//	public List<User> getUsers(){
-//		return getCurrentSession().createQuery("from Users").list();
-//	}
+	@SuppressWarnings("unchecked")
+	public List<User> getUsers(){
+		return getCurrentSession().createQuery("from User").list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<TypePenalty> getTypePenaltys(){
+		return getCurrentSession().createQuery("from TypePenalty").list();
+	}
 	
 	public Penalty getPenalty(int penaltyId){
 		return (Penalty) getCurrentSession().get(Penalty.class, penaltyId);

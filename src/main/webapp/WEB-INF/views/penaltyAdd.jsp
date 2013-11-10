@@ -7,15 +7,33 @@
 <p>${message}</p>
 <form:form method="POST" commandName="penalty" action="${pageContext.request.contextPath}/penalty/add.html" class="form-horizontal" >
 	<div class="form-group">					
-	  <label class="col-lg-2 control-label"> </label>
+	  <label class="col-lg-2 control-label">Usuário</label>
       <div class="col-lg-3">      
-      	<form:select path="penalty.user.id" itens="${user}" class="form-control" placeholder="Insira o usuário" />
-      	
-<%--       		<form:option value="0" label="Selecione..." /> --%>
-<%--       		<form:options items="${users}" itemValue="userId" itemLabel="name"/> --%>
-<%--         </form:select>	    				 --%>
+      	 <form:select path="user.userId" class="form-control" required="True">
+      	   <form:option value="" label="Selecione..." />
+      	   <c:forEach items="${users}" var="user">      	     
+      	     <form:option value="${user.userId}">${user.name}</form:option>
+      	   </c:forEach>
+      	 </form:select>
 	  </div>					  
-	</div>		
+	</div>
+	<div class="form-group">					
+	  <label class="col-lg-2 control-label">Tipo de Multa</label>
+      <div class="col-lg-3">      
+      	 <form:select path="typePenalty.typePenaltyId" class="form-control" required="True">
+      	   <form:option value="" label="Selecione..." />
+      	   <c:forEach items="${typePenaltys}" var="typePenalty">      	     
+      	     <form:option value="${typePenalty.typePenaltyId}">${typePenalty.description}</form:option>
+      	   </c:forEach>
+      	 </form:select>
+	  </div>					  
+	</div>
+	<div class="form-group">					
+	  <label class="col-lg-2 control-label">Data de Vencimento</label>
+      <div class="col-lg-3">
+      	<form:input path="expirationDate" class="form-control" placeholder="Insira a data"/>		    				
+	  </div>					  
+	</div>					
 	<div class="form-group">
 		<div class="col-lg-1 control-label"></div>
 		<div class="col-lg-1 control-label">

@@ -35,7 +35,7 @@
 				        
 				        <div class="form-group has-error">
   							<label class="control-label" for="inputError">Login ou senha incorretos</label>
-  							<input type="text" name="login" id="inputError" class="form-control" placeholder="Usuário" autofocus="">
+  							<input type="text" name="login" id="inputError" class="form-control" placeholder="Usuário" autofocus="autofocus">
 				        	<br>
 				        	<input type="password" name="password" id="inputError" class="form-control" placeholder="Senha">
 				        <br>

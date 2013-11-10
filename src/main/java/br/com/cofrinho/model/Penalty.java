@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="multas")
 public class Penalty {
@@ -28,6 +30,7 @@ public class Penalty {
 	@JoinColumn(name="cod_usuario")
 	private User user;
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name="data_vencimento")
 	private Date expirationDate;
 

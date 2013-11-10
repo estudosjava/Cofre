@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.cofrinho.model.Team;
 import br.com.cofrinho.model.User;
-import br.com.cofrinho.model.UserType;
 import br.com.cofrinho.service.UserService;
 import br.com.cofrinho.utils.LoadDefaultMessage;
 
@@ -55,14 +53,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingUser(@ModelAttribute User user, Team team, UserType userType) throws IOException {											
+	public ModelAndView addingUser(@ModelAttribute User user) throws IOException {											
 		ModelAndView modelAndView = new ModelAndView("userList");
 		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
 		try {
 			userService.addUser(user);			
 			modelAndView.addObject("users", userService.getUsers());					
-			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.added"));
-			
+			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.added"));			
 		} catch (Exception e) {
 			modelAndView = new ModelAndView("userAdd");			
 			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.exists"));

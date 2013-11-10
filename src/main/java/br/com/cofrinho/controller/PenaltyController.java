@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cofrinho.model.Penalty;
-import br.com.cofrinho.model.User;
 import br.com.cofrinho.service.PenaltyService;
 import br.com.cofrinho.utils.LoadDefaultMessage;
 
@@ -26,14 +25,17 @@ public class PenaltyController{
 	public ModelAndView addUserPage() {
 		ModelAndView modelAndView = new ModelAndView("penaltyAdd");
 		modelAndView.addObject("penalty", new Penalty());
-		modelAndView.addObject("user", new User());		
+		modelAndView.addObject("users", penaltyService.getUsers());		
+		modelAndView.addObject("typePenaltys", penaltyService.getTypePenaltys());
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/edit/{penaltyId}", method=RequestMethod.GET)
 	public ModelAndView editPenaltyPage(@PathVariable Integer penaltyId) {
 		ModelAndView modelAndView = new ModelAndView("penaltyEdit");		
-		modelAndView.addObject("penalty",penaltyService.getPenalty(penaltyId));		
+		modelAndView.addObject("penalty",penaltyService.getPenalty(penaltyId));	
+		modelAndView.addObject("users", penaltyService.getUsers());		
+		modelAndView.addObject("typePenaltys", penaltyService.getTypePenaltys());
 		return modelAndView;
 	}
 	
@@ -56,7 +58,7 @@ public class PenaltyController{
 		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
 		try {
 			penaltyService.addPenalty(penalty);			
-			modelAndView.addObject("Penaltys", penaltyService.getPenaltys());					
+			modelAndView.addObject("penaltys", penaltyService.getPenaltys());					
 			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.added"));			
 		} catch (Exception e) {
 			modelAndView = new ModelAndView("penaltyAdd");			
