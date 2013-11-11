@@ -8,48 +8,6 @@
 		</ul>
 	</div>
 	<div class="span10">
-		<div class="navbar-inner">
-			<ul class="nav nav-pills" id="menuSup">
-				<li class="dropdown">
-					<a id="drop1" href="#" role="button"class="dropdown-toggle" data-toggle="dropdown">Usuários 
-						<b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1"
-							href="${pageContext.request.contextPath}/user/add.html">Cadastro</a></li>
-						<li><a tabindex="-1"
-							href="${pageContext.request.contextPath}/user/list.html">Pesquisa</a></li>
-					</ul></li>
-				<li class="dropdown"><a id="drop1" href="#" role="button"
-					class="dropdown-toggle" data-toggle="dropdown">Times <b
-						class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1"
-							href="${pageContext.request.contextPath}/team/addTeam.html">Cadastro</a></li>
-						<li><a tabindex="-1"
-							href="${pageContext.request.contextPath}/team/listTeam.html">Pesquisa</a></li>
-					</ul></li>
-				<li class="dropdown"><a id="drop1" href="#" role="button"
-					class="dropdown-toggle" data-toggle="dropdown">Multas <b
-						class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1"
-							href="${pageContext.request.contextPath}/penalty/add.html">Cadastro</a></li>
-						<li><a tabindex="-1"
-							href="${pageContext.request.contextPath}/penalty/listPenalty.html">Pesquisa</a></li>
-					</ul></li>
-				<li class="dropdown"><a id="drop1" href="#" role="button"
-					class="dropdown-toggle" data-toggle="dropdown">Tipos de Multas
-						<b class="caret"></b>
-				</a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1"
-							href="${pageContext.request.contextPath}/typepenalty/addTypePenalty.html">Cadastro</a></li>
-						<li><a tabindex="-1"
-							href="${pageContext.request.contextPath}/typepenalty/listTypePenalty.html">Pesquisa</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
+		<jsp:include page="menu.jsp" flush="true"/>  
 	</div>
 </div>
