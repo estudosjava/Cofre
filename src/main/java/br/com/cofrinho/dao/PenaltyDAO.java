@@ -26,10 +26,14 @@ public class PenaltyDAO {
 	}
 	
 	private Penalty fillPenalty(Penalty penalty) {
+		User user = new User();
+		TypePenalty typePenalty = new TypePenalty();		
+		user.setUserId(penalty.getUser().getUserId());
+		typePenalty.setTypePenaltyId(penalty.getTypePenalty().getTypePenaltyId());		
 		Penalty penaltyToUpdate = getPenalty(penalty.getPenaltyId());				
-		penaltyToUpdate.getTypePenalty().setTypePenaltyId(penalty.getTypePenalty().getTypePenaltyId());
+		penaltyToUpdate.setTypePenalty(typePenalty);
 		penaltyToUpdate.setExpirationDate(penalty.getExpirationDate());
-		penaltyToUpdate.getUser().setUserId(penalty.getUser().getUserId());							
+		penaltyToUpdate.setUser(user);							
 		return penaltyToUpdate;
 	}
 	

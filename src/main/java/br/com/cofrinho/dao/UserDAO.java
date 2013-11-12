@@ -28,10 +28,14 @@ public class UserDAO {
 		getCurrentSession().save(user);
 	}
 	
-	private User fillUser(User user) {
+	private User fillUser(User user) {		
+		Team team = new Team();
+		UserType userType = new UserType();				
+		team.setTeamId(user.getTeam().getTeamId());		
+		userType.setUserTypeCode(user.getUserType().getUserTypeCode());				
 		User userToUpdate = getUser(user.getUserId());				
-		userToUpdate.getUserType().setUserTypeCode(user.getUserType().getUserTypeCode());
-		userToUpdate.getTeam().setTeamId(user.getTeam().getTeamId());
+		userToUpdate.setUserType(userType);
+		userToUpdate.setTeam(team);		
 		userToUpdate.setLogin(user.getLogin());
 		userToUpdate.setName(user.getName());
 		userToUpdate.setPassword(user.getPassword());		
