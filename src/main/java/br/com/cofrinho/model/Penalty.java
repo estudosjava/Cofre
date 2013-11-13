@@ -30,7 +30,7 @@ public class Penalty {
 	@JoinColumn(name="cod_usuario")
 	private User user;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="data_vencimento")
 	private Date expirationDate;
 

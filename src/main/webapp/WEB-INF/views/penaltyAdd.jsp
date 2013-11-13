@@ -31,7 +31,7 @@
 	<div class="form-group">					
 	  <label class="col-lg-2 control-label">Data de Vencimento</label>
       <div class="col-lg-3">
-      	<form:input path="expirationDate" class="form-control" placeholder="Insira a data"/>		    				
+      	<form:input path="expirationDate" class="form-control" placeholder="Insira a data" type="date" />		    				
 	  </div>					  
 	</div>					
 	<div class="form-group">
