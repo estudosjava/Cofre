@@ -21,8 +21,6 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 @Configuration
-//@ComponentScan("br.com.cofrinho")
-//@EnableWebMvc
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 public class WebAppConfig {
@@ -93,26 +91,5 @@ public class WebAppConfig {
         ret.setDefaultEncoding("UTF-8");
         return ret;
     }
-
-//    @SuppressWarnings("deprecation")
-//	@Bean
-//    public HandlerMapping handlerMapping() {
-//        final LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-//        interceptor.setParamName("language");
-//
-//        final DefaultAnnotationHandlerMapping ret = new DefaultAnnotationHandlerMapping();
-//        ret.setInterceptors(new Object[] { interceptor });
-//        return ret;
-//    }
-	
-	
-//	@Bean
-//	public UrlBasedViewResolver setupViewResolver() {
-//		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-//		resolver.setPrefix("/WEB-INF/views/");
-//		resolver.setSuffix(".jsp");
-//		resolver.setViewClass(JstlView.class);
-//		return resolver;
-//	}
 
 }

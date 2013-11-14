@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cofrinho.model.Penalty;
 import br.com.cofrinho.service.PenaltyService;
@@ -20,7 +21,8 @@ public class PenaltyController{
 
 	@Autowired
 	private PenaltyService penaltyService;
-
+	private String redirectToListPage = "redirect:/penalty/listPenalty";
+	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public ModelAndView addUserPage() {
 		ModelAndView modelAndView = new ModelAndView("penaltyAdd");
@@ -47,30 +49,32 @@ public class PenaltyController{
 	}
 
 	@RequestMapping(value="/delete/{penaltyId}", method=RequestMethod.GET)
-	public ModelAndView deletePenalty(@PathVariable Integer penaltyId) throws IOException {
+	public String deletePenalty(@PathVariable Integer penaltyId,  final RedirectAttributes redirectAttributes) throws IOException {
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();	
 		penaltyService.deletePenalty(penaltyId);
-		return returnModel("register.deleted");
+		redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.deleted"));
+		return redirectToListPage;
 	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingPenalty(@ModelAttribute Penalty penalty) throws IOException {											
-		ModelAndView modelAndView = new ModelAndView("penaltyList");
-		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
+	public String addingPenalty(@ModelAttribute Penalty penalty,  final RedirectAttributes redirectAttributes) throws IOException {											
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();			
 		try {
 			penaltyService.addPenalty(penalty);			
-			modelAndView.addObject("penaltys", penaltyService.getPenaltys());					
-			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.added"));			
+			redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.added"));						
 		} catch (Exception e) {
-			modelAndView = new ModelAndView("penaltyAdd");			
-			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.exists"));
+			redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.exists"));
+			redirectToListPage = "redirect:/penalty/add";
 		}		
-		return modelAndView;
+		return redirectToListPage;
 	}
 	
 	@RequestMapping(value="/edit/{penaltyId}", method=RequestMethod.POST)
-	public ModelAndView edditingPenalty(@ModelAttribute Penalty penalty, @PathVariable Integer penaltyId) throws IOException {					
-		penaltyService.updatePenalty(penalty);				
-		return returnModel("register.updated");
+	public String edditingPenalty(@ModelAttribute Penalty penalty, @PathVariable Integer penaltyId,  final RedirectAttributes redirectAttributes) throws IOException {					
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();
+		penaltyService.updatePenalty(penalty);	
+		redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.updated"));		
+		return redirectToListPage;
 	}
 	
 	public ModelAndView returnModel(String message) throws IOException{

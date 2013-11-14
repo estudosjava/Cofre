@@ -26,10 +26,7 @@ public class User {
     
 	@ManyToOne
 	@JoinColumn(name="cod_tipo_usuario")
-	private UserType userType; 
-	
-//	@Column(name="cod_equipe", nullable= false)
-//	private Integer teamId;
+	private UserType userType; 	
 	
 	@Column(nullable= false)
 	private String login;
@@ -42,9 +39,6 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
     private Set<Penalty> penaltys;
-
-//	@OneToMany(mappedBy="user")
-//    private Set<UserType> userType;
 	
 	public Integer getUserId() {
 		return userId;

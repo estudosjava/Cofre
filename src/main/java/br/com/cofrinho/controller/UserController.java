@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cofrinho.model.User;
 import br.com.cofrinho.service.UserService;
@@ -19,7 +20,8 @@ import br.com.cofrinho.utils.LoadDefaultMessage;
 public class UserController {
 	
 	@Autowired
-	private UserService userService;						
+	private UserService userService;
+	private String redirectToListPage = "redirect:/user/list";
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public ModelAndView addUserPage() {
@@ -47,30 +49,32 @@ public class UserController {
 	}	
 		
 	@RequestMapping(value="/delete/{userId}", method=RequestMethod.GET)
-	public ModelAndView deleteUser(@PathVariable Integer userId) throws IOException {
+	public String deleteUser(@PathVariable Integer userId,  final RedirectAttributes redirectAttributes) throws IOException {
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
 		userService.deleteUser(userId);
-		return returnModel("register.deleted");
+		redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.deleted"));
+		return redirectToListPage;
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView addingUser(@ModelAttribute User user) throws IOException {											
-		ModelAndView modelAndView = new ModelAndView("userList");
+	public String addingUser(@ModelAttribute User user,  final RedirectAttributes redirectAttributes) throws IOException {													
 		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();		
 		try {
 			userService.addUser(user);			
-			modelAndView.addObject("users", userService.getUsers());					
-			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.added"));			
+	        redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.added"));				        	        
 		} catch (Exception e) {
-			modelAndView = new ModelAndView("userAdd");			
-			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.exists"));
+			redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.exists"));
+			redirectToListPage = "redirect:/user/add";
 		}		
-		return modelAndView;
+		return redirectToListPage;
 	}
 	
 	@RequestMapping(value="/edit/{userId}", method=RequestMethod.POST)
-	public ModelAndView edditingUser(@ModelAttribute User user, @PathVariable Integer userId) throws IOException {					
+	public String edditingUser(@ModelAttribute User user, @PathVariable Integer userId, final RedirectAttributes redirectAttributes) throws IOException {					
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();
 		userService.updateUser(user);				
-		return returnModel("register.updated");
+		redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.updated"));
+		return redirectToListPage;
 	}
 	
 	public ModelAndView returnModel(String message) throws IOException{

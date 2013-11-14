@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cofrinho.model.Team;
 import br.com.cofrinho.service.TeamService;
@@ -21,7 +22,8 @@ import br.com.cofrinho.utils.LoadDefaultMessage;
 public class TeamController {
 	
 	@Autowired
-	private TeamService teamService;	
+	private TeamService teamService;
+	private String redirectToListPage = "redirect:/team/listTeam";
 	
 	@RequestMapping(value="/addTeam", method=RequestMethod.GET)
 	public ModelAndView addTeamPage() {
@@ -46,29 +48,31 @@ public class TeamController {
 	}	
 	
 	@RequestMapping(value="/addTeam", method=RequestMethod.POST)
-	public ModelAndView addingTeam(@ModelAttribute Team team) throws IOException {		
-		ModelAndView modelAndView = new ModelAndView("teamList");
+	public String addingTeam(@ModelAttribute Team team,  final RedirectAttributes redirectAttributes) throws IOException {				
 		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();				
 		try {
-			teamService.addTeam(team);						
-			modelAndView.addObject("teams", getListTeams());
-			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.added"));					
+			teamService.addTeam(team);			
+			redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.added"));														
 		} catch (Exception e) {
-			modelAndView = new ModelAndView("teamAdd");
-			modelAndView.addObject("message",loadDefaultMessage.getMessage("register.exists"));
+			redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.exists"));
+			redirectToListPage = "redirect:/team/addTeam";
 		}
-		return modelAndView;
+		return redirectToListPage;
 	}
 		
 	@RequestMapping(value="/edit/{teamId}", method=RequestMethod.POST)
-	public ModelAndView edditingTeam(@ModelAttribute Team team, @PathVariable Integer teamId) throws IOException {				
-		teamService.updateTeam(team);		
-		return returnModel("register.updated");
+	public String edditingTeam(@ModelAttribute Team team, @PathVariable Integer teamId,  final RedirectAttributes redirectAttributes) throws IOException {
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();
+		teamService.updateTeam(team);
+		redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.updated"));
+		return redirectToListPage;
 	}
 	
 	@RequestMapping(value="/delete/{teamId}", method=RequestMethod.GET)
-	public ModelAndView deleteTeam(@PathVariable Integer teamId) throws IOException {		
+	public ModelAndView deleteTeam(@PathVariable Integer teamId,  final RedirectAttributes redirectAttributes) throws IOException {		
+		LoadDefaultMessage loadDefaultMessage = new LoadDefaultMessage();
 		teamService.deleteTeam(teamId);
+		redirectAttributes.addFlashAttribute("message",loadDefaultMessage.getMessage("register.deleted"));
 		return returnModel("register.deleted");
 	}
 	
