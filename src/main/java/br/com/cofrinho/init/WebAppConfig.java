@@ -70,12 +70,12 @@ public class WebAppConfig {
 	}
 	
 	
-	@Bean 
-	public LocaleChangeInterceptor localeChangeInterceptor(){
-	    LocaleChangeInterceptor localeChangeInterceptor=new LocaleChangeInterceptor();
-	    localeChangeInterceptor.setParamName("lang");
-	    return localeChangeInterceptor;
-	}
+//	@Bean 
+//	public LocaleChangeInterceptor localeChangeInterceptor(){
+//	    LocaleChangeInterceptor localeChangeInterceptor=new LocaleChangeInterceptor();
+//	    localeChangeInterceptor.setParamName("lang");
+//	    return localeChangeInterceptor;
+//	}
 	
     @Bean
     public LocaleResolver localeResolver() {
@@ -84,12 +84,12 @@ public class WebAppConfig {
         return ret;
     }
 
-    @Bean
+   /* @Bean
     public MessageSource messageSource() {
         final ReloadableResourceBundleMessageSource ret = new ReloadableResourceBundleMessageSource();
         ret.setBasename("classpath:messages");
         ret.setDefaultEncoding("UTF-8");
         return ret;
-    }
+    }*/
 
 }
