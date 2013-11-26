@@ -46,7 +46,7 @@ public class UserService {
 		return userDAO.getUserTypes();
 	}
 	
-	public boolean checkUser(User user){
+	public List<User> checkUser(User user){
 		return userDAO.checkUser(user);
 	}
 	
