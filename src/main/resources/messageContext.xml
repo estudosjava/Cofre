@@ -7,5 +7,4 @@
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages"></property>
 	</bean>
- 
 </beans>

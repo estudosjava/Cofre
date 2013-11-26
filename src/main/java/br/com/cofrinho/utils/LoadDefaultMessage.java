@@ -13,4 +13,5 @@ public class LoadDefaultMessage {
 	Locale locale = new Locale.Builder().setLanguage("pt").setRegion("BR").build();
 	return context.getMessage(key,new Object[] {}, locale);		
 	}
+	
 }
