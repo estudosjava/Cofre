@@ -2,11 +2,9 @@ package br.com.cofrinho.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Example;
-import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -70,10 +68,14 @@ public class UserDAO {
 		return getCurrentSession().createQuery("from UserType").list();
 	}
 	
-	public boolean checkUser(User user){		
-		Criteria crit = getCurrentSession().createCriteria(User.class).add(Example.create(user));
-		int count = ((Number) crit.setProjection(Projections.rowCount()).uniqueResult()).intValue();
-		return (count > 0);
+	@SuppressWarnings("unchecked")
+	public List<User> checkUser(User user){		
+		Query query = getCurrentSession().createQuery("from User where login = :login and password = :password");
+		query.setParameter("login", user.getLogin());
+		query.setParameter("password", user.getPassword());
+		List<User> list = query.list();
+		System.out.println(list.size());
+		return list;
 	}
 	
 }
