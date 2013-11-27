@@ -1,4 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,10 +27,10 @@
 		<%@ include file = "headerLogonAndMenu.jsp" %>		
 		<div class="row-fluid">
 		  	<div class="span2">
-		  	Bem vindo ${userlog.name}
-		  	</br>
-		  	<a href="/Cofre/login/finalizaUsuario">Logout</a>
-		    </div>
+		  	Bem vindo <c:forEach var="user" items="${userlog}">
+		    ${user.name}
+		  	</c:forEach>
+		  	</div>
 			<div class="span8">
 				<form class="form-horizontal">
 					<fieldset>

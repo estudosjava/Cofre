@@ -46,20 +46,8 @@ public class UserService {
 		return userDAO.getUserTypes();
 	}
 	
-	public User checkUser(User user){
-		List<User> list = userDAO.checkUser(user);
-		return iterateList(list);
-	}
-	private User iterateList(List<User> list) {
-		User userReturn = new User();
-		if(list.size()!=0)
-		for (User user : list) {
-			userReturn = user;
-		}
-		else
-			userReturn = null;
-		return userReturn;
-		
+	public List<User> checkUser(User user){
+		return userDAO.checkUser(user);
 	}
 	
 }

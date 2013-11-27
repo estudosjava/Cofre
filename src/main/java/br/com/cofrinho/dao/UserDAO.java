@@ -74,6 +74,7 @@ public class UserDAO {
 		query.setParameter("login", user.getLogin());
 		query.setParameter("password", user.getPassword());
 		List<User> list = query.list();
+		System.out.println(list.size());
 		return list;
 	}
 	
