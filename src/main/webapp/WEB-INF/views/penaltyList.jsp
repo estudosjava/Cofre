@@ -4,7 +4,7 @@
 <jsp:include page="header.jsp" flush="true">
 	<jsp:param name="title" value="Lista de Multas" />
 </jsp:include>
-<p>${message}</p>
+${message}
 <table class="table table-striped">
 	<thead>
 		<tr>

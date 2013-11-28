@@ -30,7 +30,7 @@
 			<div class="row-fluid">
 				<div class="span2"></div>
 				<div class="span2">
-				<p>${message}</p>
+				${message}
 					  <form action="/Cofre/login/validaUsuario" method="post" class="form-signin">
 				         <h2 class="form-signin-heading">Login</h2>
 				        <input type="text" name="login" id="login" class="form-control" placeholder="Usuário" autofocus="autofocus">

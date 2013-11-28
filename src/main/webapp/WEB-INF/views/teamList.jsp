@@ -3,7 +3,7 @@
 <jsp:include page="header.jsp" flush="true">  
         <jsp:param name="title" value="Lista de Times"/>  
 </jsp:include> 
-<p>${message}</p>                                
+${message}                                
 <table class="table table-striped" style="width: 700px">  
 	<thead>
 		<tr>							
